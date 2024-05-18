@@ -1,11 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>stron Grupo 8 - Codo a codo</title>
+    <title>Grupo 8 - Codo a codo</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1><strong>Codo a Codo - Grupo 8</strong></h1>
+    <header>
+        <h1>Grupo 8 - Codo a codo</h1>
+    </header>
+    <main>
+        <section id="pedidos">
+            <h2>Pedidos</h2>
+            <label for="reservarMesa">Reservar mesa:</label>
+            <select id="reservarMesa" name="reservarMesa">
+                <option value="reservar">Reservar mesa</option>
+            </select>
+        </section>
+        <section id="comidas">
+            <h2>Comidas</h2>
+            <label for="tipoComida">Elige una comida:</label>
+            <select id="tipoComida" name="tipoComida">
+                <option value="pizzas">Pizzas</option>
+                <option value="empanadas">Empanadas</option>
+            </select>
+        </section>
+        <section id="bebidas">
+            <h2>Bebidas</h2>
+            <label for="tipoBebida">Elige una bebida:</label>
+            <select id="tipoBebida" name="tipoBebida">
+                <option value="gaseosa">Gaseosa</option>
+                <option value="vino">Vino</option>
+                <option value="cerveza">Cerveza</option>
+            </select>
+        </section>
+    </main>
 </body>
-</html> 
+</html>
