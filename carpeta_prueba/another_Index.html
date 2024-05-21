@@ -13,10 +13,25 @@
     <main>
         <section id="pedidos">
             <h2>Pedidos</h2>
-            <label for="reservarMesa">Reservar mesa:</label>
-            <select id="reservarMesa" name="reservarMesa">
-                <option value="reservar">Reservar mesa</option>
+            <label for="reservarMesa">Reservar mesa disponible:</label>
+            <select id="reservarMesa" name="reservarMesa" onchange="redirectToForm()">
+                <option value="">Selecciona una mesa</option>
+                <option value="1">Mesa 1</option>
+                <option value="2">Mesa 2</option>
+                <option value="3">Mesa 3</option>
+                <option value="4">Mesa 4</option>
             </select>
+        
+            <script>
+                function redirectToForm() {
+                    var select = document.getElementById("reservarMesa");
+                    var selectedOption = select.value;
+                    
+                    if (selectedOption) {
+                        window.location.href = "Reservar_Mesa.html";
+                    }
+                }
+            </script>
         </section>
         <section id="comidas">
             <h2>Comidas</h2>
