@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Hola mundo template</h1>
-</body>
-</html>
+{% extends "webGOcho/base.html" %}
+{% load static %}
+
+{% block titulo %}Inicio{% endblock %}
+{% block extracss %}
+    <link rel="stylesheet" href="{% static 'webGOcho/styles/index.css' %}">
+{% endblock %}
+<!--Agregar en main las funcionalidades propias del index-->
+{% block main %}
+    <h2>Funciona el template base + index</h2>
+{% endblock %}

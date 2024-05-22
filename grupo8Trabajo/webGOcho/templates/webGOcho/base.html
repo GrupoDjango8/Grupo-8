@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo 8 - Codo a codo</title>
+    <link rel="stylesheet" href="{% static 'webGOcho/styles/base.css' %}">
+    {% block extracss %} {% endblock %}
+</head>
+<body>
+    <header>
+        <h1>Grupo 8 - Codo a codo</h1>
+    </header>
+    <main class="contenido">
+        {% block main %}{% endblock %}
+    </main>
+    <footer>
+        <p><strong>Todos los derechos reservados - Grupo 8 - Codo a codo 2024</strong></p>
+    </footer>
+</body>
+</html>
