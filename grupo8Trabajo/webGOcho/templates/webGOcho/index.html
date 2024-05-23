@@ -7,5 +7,43 @@
 {% endblock %}
 <!--Agregar en main las funcionalidades propias del index-->
 {% block main %}
-    <h2>Funciona el template base + index</h2>
+    <section id="pedidos">
+        <h2>Pedidos</h2>
+        <label for="reservarMesa">Reservar mesa disponible:</label>
+        <select id="reservarMesa" name="reservarMesa" onchange="redirectToForm()">
+            <option value="">Selecciona una mesa</option>
+            <option value="1">Mesa 1</option>
+            <option value="2">Mesa 2</option>
+            <option value="3">Mesa 3</option>
+            <option value="4">Mesa 4</option>
+        </select>
+    
+        <script>
+            function redirectToForm() {
+                var select = document.getElementById("reservarMesa");
+                var selectedOption = select.value;
+                
+                if (selectedOption) {
+                    window.location.href = "Reservar_Mesa.html";
+                }
+            }
+        </script>
+    </section>
+    <section id="comidas">
+        <h2>Comidas</h2>
+        <label for="tipoComida">Elige una comida:</label>
+        <select id="tipoComida" name="tipoComida">
+            <option value="pizzas">Pizzas</option>
+            <option value="empanadas">Empanadas</option>
+        </select>
+    </section>
+    <section id="bebidas">
+        <h2>Bebidas</h2>
+        <label for="tipoBebida">Elige una bebida:</label>
+        <select id="tipoBebida" name="tipoBebida">
+            <option value="gaseosa">Gaseosa</option>
+            <option value="vino">Vino</option>
+            <option value="cerveza">Cerveza</option>
+        </select>
+    </section>
 {% endblock %}
