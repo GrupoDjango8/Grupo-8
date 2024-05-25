@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .forms import AltaClienteForm
 
 # Create your views here.
 #Renderizado del index
@@ -8,4 +9,7 @@ def index(request):
 
 #Renderizado del registro
 def registro(request):
-    return render(request, "webGOcho/registro.html")
+    contexto = {
+        'alta_cliente': AltaClienteForm()
+    }
+    return render(request, "webGOcho/registro.html", contexto)
