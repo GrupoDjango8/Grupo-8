@@ -13,3 +13,4 @@ def registro(request):
         'alta_cliente': AltaClienteForm()
     }
     return render(request, "webGOcho/registro.html", contexto)
+
