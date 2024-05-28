@@ -32,6 +32,15 @@ section:hover {
     transform: scale(1.02);
 }
 
+a {
+    text-decoration: none;
+    color: #131212;
+}
+
+a:hover{
+    color: #f1efef;
+}
+
 h2 {
     margin-top: 0;
     color: #131212;
@@ -69,4 +78,21 @@ footer {
 footer p {
     margin: 0;
     color: #fff;
+}
+
+/* Messages */
+header .messages {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    list-style: none;
+}
+
+header .messages .success {
+    background-color: rgba(115, 255, 0, 0.897);
+    padding: 15px;
+    color: white;
+    list-style: none;
 }

@@ -10,11 +10,17 @@
 </head>
 <body>
     <header>
-        <h1>Grupo 8 - Codo a codo</h1>
+        <h1><a href="{% url 'index' %}">Grupo 8 - Codo a Codo</a></h1>
         <nav>
-            <a href="{% url 'index' %}">Index</a>
             <a href="{% url 'registro' %}">Registro</a>
         </nav>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li {% if message.tags %} class="{{message.tags}}" {%endif%}> {{message}}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
     </header>
     <main class="contenido">
         {% block main %}{% endblock %}
