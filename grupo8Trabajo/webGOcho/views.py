@@ -6,7 +6,14 @@ from django.contrib import messages
 # Create your views here.
 #Renderizado del index
 def index(request):
-    return render(request, "webGOcho/index.html")
+    contexto = {
+        'bebidas':[
+            ['Gaseosa',2000],
+            ['Vino', 3000],
+            ['Cerveza', 1500]
+        ]
+    }
+    return render(request, "webGOcho/index.html", contexto)
 
 #Renderizado del registro
 def registro(request):

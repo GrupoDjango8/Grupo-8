@@ -41,9 +41,23 @@
         <h2>Bebidas</h2>
         <label for="tipoBebida">Elige una bebida:</label>
         <select id="tipoBebida" name="tipoBebida">
-            <option value="gaseosa">Gaseosa</option>
+            {%for bebida in bebidas%}
+                <option value="">{{bebida.0}} precio: {{bebida.1}}</option>
+            {% empty %}
+                <option value=""><p>No hay bebidas disponibles</p></option>
+            {% endfor %}
+            <!-- <option value="gaseosa">Gaseosa</option>
             <option value="vino">Vino</option>
-            <option value="cerveza">Cerveza</option>
+            <option value="cerveza">Cerveza</option> -->
+            <!-- {% for alumno in alumnos %}
+                <article>
+                    <p>{{ alumno | upper }}</p>
+                </article>
+                {% empty %}
+                <article>
+                    <p>No hay alumnos inscriptos</p>
+                </article>
+                {% endfor %} -->
         </select>
     </section>
 {% endblock %}

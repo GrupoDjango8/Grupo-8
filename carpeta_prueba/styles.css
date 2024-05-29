@@ -69,3 +69,37 @@ footer p {
     margin: 0;
     color: #fff;
 }
+/*Agregar al template*/
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #f0f0f0;
+}
+
+.cantidad-input {
+    width: 50px;
+    padding: 5px;
+}
+
+.pedir-button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.centrado {
+    display: flex; /* Make the button a flex container */
+    justify-content: center; /* Align items horizontally within the flex container */
+
+}
