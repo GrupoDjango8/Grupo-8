@@ -101,5 +101,6 @@ th {
 .centrado {
     display: flex; /* Make the button a flex container */
     justify-content: center; /* Align items horizontally within the flex container */
+    width: 100%!important;
 
 }
