@@ -19,3 +19,11 @@ class AltaClienteForm(forms.Form):
             raise ValidationError("El apellido solo puede estar compuesto por letras")
 
         return self.cleaned_data["apellido"]
+
+    def clean_dni(self):
+        if not isinstance(self.cleaned_data["dni"], int):
+            raise ValidationError("El apellido solo puede estar compuesto por letras")
+
+        return self.cleaned_data["dni"]
+
+    
