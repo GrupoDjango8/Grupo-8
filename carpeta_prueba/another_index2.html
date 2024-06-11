@@ -6,6 +6,7 @@
     <title>Grupo 8 - Codo a codo</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
@@ -21,6 +22,7 @@
                 <option value="2">Mesa 2</option>
                 <option value="3">Mesa 3</option>
                 <option value="4">Mesa 4</option>
+                
             </select>
         
             <script>
@@ -59,6 +61,7 @@
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td><i class="fas fa-pizza-slice"></i> Pizza</td>
                                     <td>Pizza Napolitana</td>
                                     <td>Pizza</td>
                                     <td>$600</td>
@@ -67,6 +70,7 @@
                                     <td><button class="pedir-button">Pedir</button></td>
                                 </tr>
                                 <tr>
+                                    <td><i class="fas fa-utensils"></i> Empanada</td>
                                     <td>Empanada de Humita</td>
                                     <td>Empanada</td>
                                     <td>$250</td>
@@ -75,6 +79,7 @@
                                     <td><button class="pedir-button">Pedir</button></td>
                                 </tr>
                                 <tr>
+                                    <td><i class="fas fa-drumstick-bite"></i> Milanesa</td>
                                     <td>Milanesa Napolitana</td>
                                     <td>Milanesa</td>
                                     <td>$400</td>
@@ -83,6 +88,7 @@
                                     <td><button class="pedir-button">Pedir</button></td>
                                 </tr>
                                 <tr>
+                                    <td><i class="fas fa-cocktail"></i> Coca-Cola</td>
                                     <td>Coca-Cola Zero</td>
                                     <td>Bebida</td>
                                     <td>$150</td>
@@ -91,6 +97,7 @@
                                     <td><button class="pedir-button">Pedir</button></td>
                                 </tr>
                                 <tr>
+                                    <td><i class="fas fa-cocktail"></i> Coca-Cola</td>
                                     <td>Sprite Zero</td>
                                     <td>Bebida</td>
                                     <td>$150</td>
@@ -125,6 +132,7 @@
                             </thead>
                             <tbody>
                                 <tr>
+                                    <td><i class="fas fa-cocktail"></i> Coca-Cola</td>
                                     <td>Coca-Cola</td>
                                     <td>Gaseosa</td>
                                     <td>$150</td>
@@ -133,6 +141,7 @@
                                     <td><button class="pedir-button">Pedir</button></td>
                                 </tr>
                                 <tr>
+                                    <td><i class="fas fa-cocktail"></i> Coca-Cola</td>
                                     <td>Sprite</td>
                                     <td>Gaseosa</td>
                                     <td>$150</td>
@@ -141,6 +150,7 @@
                                     <td><button class="pedir-button">Pedir</button></td>
                                 </tr>
                                 <tr>
+                                    <td><i class="fas fa-beer"></i> Stella Artois</td>
                                     <td>Quilmes</td>
                                     <td>Cerveza</td>
                                     <td>$250</td>
@@ -149,6 +159,7 @@
                                     <td><button class="pedir-button">Pedir</button></td>
                                 </tr>
                                 <tr>
+                                    <td><i class="fas fa-beer"></i> Stella Artois</td>
                                     <td>Stella Artois</td>
                                     <td>Cerveza</td>
                                     <td>$300</td>
@@ -157,6 +168,7 @@
                                     <td><button class="pedir-button">Pedir</button></td>
                                 </tr>
                                 <tr>
+                                    <td><i class="fas fa-wine-bottle"></i> Cabernet Sauvignon</td>
                                     <td>Malbec</td>
                                     <td>Vino</td>
                                     <td>$400</td>
@@ -165,6 +177,7 @@
                                     <td><button class="pedir-button">Pedir</button></td>
                                 </tr>
                                 <tr>
+                                    <td><i class="fas fa-wine-bottle"></i> Cabernet Sauvignon</td>
                                     <td>Cabernet Sauvignon</td>
                                     <td>Vino</td>
                                     <td>$450</td>
@@ -172,6 +185,7 @@
                                     <td>Vino tinto argentino varietal Cabernet Sauvignon. Sabor complejo y especiado.</td>
                                     <td><button class="pedir-button">Pedir</button></td>
                                 </tr>
+                                
                             </tbody>
                         </table>
                     </div>
@@ -179,6 +193,10 @@
                 </div> 
               </div>
         </section>
+        <div class="form-group mt-3">
+            <label for="mensaje">ESCRIBIR MENSAJE:</label>
+            <textarea class="form-control" id="mensaje" rows="3" placeholder="Escribe tu mensaje aquí..."></textarea>
+        </div>
         <button class="btn btn-danger centrado">Enviar</button>
     </main>
     <footer>
