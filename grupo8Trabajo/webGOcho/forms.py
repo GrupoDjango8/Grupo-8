@@ -6,6 +6,7 @@ class AltaClienteForm(forms.Form):
     apellido = forms.CharField(label='Apellido del cliente',required=True)
     dni = forms.IntegerField(label='DNI', required=True)
     email = forms.EmailField(label='Email', required=True)
+    telefono = forms.IntegerField(label='Número de telefono', required=True)
     numero_mesa = forms.IntegerField(label='Escriba su número de mesa', required=True)
 
     def clean_nombre(self):
