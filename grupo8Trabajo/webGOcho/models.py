@@ -34,6 +34,7 @@ class Menu(models.Model):
     descripcion = models.CharField(verbose_name='Descripción')
     precio = models.IntegerField(verbose_name='Precio')
 
+# hola = 'hola'
 #Pedido
 #FK MESA
 #Precio total
@@ -51,33 +52,28 @@ class Menu(models.Model):
 #     items_pedido = models.ManyToManyField(Menu, through='PedidoItems') #-> esto lo agrega gemini
 
 #Pedido según chat gpt
-# class Pedido(models.Model):
-#     ESTADO_CHOICES = [
-#         ('PENDIENTE', 'Pendiente'),
-#         ('PREPARANDO', 'Preparando'),
-#         ('ENTREGADO', 'Entregado'),
-#         ('CANCELADO', 'Cancelado'),
-#     ]
+class Pedido(models.Model):
+    ESTADO_CHOICES = [
+        ('PENDIENTE', 'Pendiente'),
+        ('ENTREGADO', 'Entregado'),
+    ]
     
-#     numero_mesa = models.ForeignKey(Cliente, verbose_name='Numero de mesa', on_delete=models.CASCADE, blank=True)
-#     fecha_hora = models.DateTimeField(auto_now_add=True, verbose_name='Fecha y hora del pedido')
-#     precio_total = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Precio total')
-#     observaciones = models.TextField(verbose_name='Observaciones', blank=True, null=True)
-#     estado = models.CharField(max_length=10, choices=ESTADO_CHOICES, default='PENDIENTE', verbose_name='Estado del pedido')
-#     comida_bebida = models.ManyToManyField(Menu, through='PedidoItem')
+    numero_mesa = models.ForeignKey(Cliente, verbose_name='Numero de mesa', on_delete=models.CASCADE, blank=True)
+    precio_total = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Precio total')
+    estado = models.CharField(max_length=10, choices=ESTADO_CHOICES, default='PENDIENTE', verbose_name='Estado del pedido')
+    comida_bebida = models.ManyToManyField(Menu, through='PedidoItem')
 
-#     def calcular_precio_total(self):
-#         total = 0
-#         for item in self.pedidoitem_set.all():
-#             total += item.menu.precio * item.cantidad
-#         self.precio_total = total
-#         self.save()
+    def calcular_precio_total(self):
+        total = 0
+        for item in self.pedidoitem_set.all():
+            total += item.menu.precio * item.cantidad
+        self.precio_total = total
+        self.save()
 
-# class PedidoItem(models.Model):
-#     pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
-#     menu = models.ForeignKey(Menu, on_delete=models.CASCADE)
-#     cantidad = models.IntegerField(default=1)
+class PedidoItem(models.Model):
+    pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
+    menu = models.ForeignKey(Menu, on_delete=models.CASCADE)
+    cantidad = models.IntegerField(default=1)
 
-#     class Meta:
-#         unique_together = ('pedido', 'menu')
+
     
