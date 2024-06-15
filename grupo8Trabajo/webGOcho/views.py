@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .forms import *
 from django.contrib import messages
-
+from .models import Cliente
 # Create your views here.
 #Renderizado del index
 def index(request):
@@ -32,7 +32,14 @@ def registro(request):
         if form.is_valid():
             # Si el form es correcto
             # Lo redirijo a una vista segura por ejemplo el index
-            
+            nuevo_cliente = Cliente(
+                nombre = form.cleaned_data['nombre'], 
+                apellido = form.cleaned_data['apellido'], 
+                dni = form.cleaned_data['dni'], 
+                email = form.cleaned_data['email'],
+                numero_mesa = form.cleaned_data['numero_mesa']
+            )
+            nuevo_cliente.save()
             messages.success(request, 'El cliente fue dado de alta con éxito')
             return redirect('index')
 
