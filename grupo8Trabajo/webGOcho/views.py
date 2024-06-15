@@ -6,6 +6,7 @@ from .models import Cliente
 # Create your views here.
 #Renderizado del index
 def index(request):
+    # Hay que harcodear esto
     contexto = {
         'bebidas':[
             ['Gaseosa',2000],
