@@ -2,18 +2,16 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .forms import *
 from django.contrib import messages
-from .models import Cliente
+from .models import Cliente, Menu
 # Create your views here.
 #Renderizado del index
 def index(request):
     # Hay que harcodear esto
+    menu = Menu.objects.all()
     contexto = {
-        'bebidas':[
-            ['Gaseosa',2000],
-            ['Vino', 3000],
-            ['Cerveza', 1500]
-        ]
+        'objetos_menu': menu
     }
+    print(contexto['objetos_menu'])
     return render(request, "webGOcho/index.html", contexto)
 
 #Renderizado del registro

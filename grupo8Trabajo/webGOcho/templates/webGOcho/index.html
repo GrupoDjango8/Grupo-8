@@ -46,15 +46,27 @@
                     <table>
                         <thead>
                             <tr>
-                                <th>Plato</th>
-                                <th>Tipo</th>
+                                <th>Objeto</th>
+                                <th>Nombre del producto</th>
+                                <th>Subtipo de plato o bebida</th>
+                                <th>Descripción</th>
                                 <th>Precio</th>
                                 <th>Cantidad</th>
-                                <th>Descripción</th>
                                 <th>Pedir</th>
                             </tr>
                         </thead>
                         <tbody>
+                            {% for objeto_del_menu in objetos_menu %}
+                                {% if objeto_del_menu.objeto == 'comida' %}
+                                    <td>{{objeto_del_menu.objeto}}</td>
+                                    <td>{{objeto_del_menu.nombre_del_producto}}</td>
+                                    <td>{{objeto_del_menu.subtipo}}</td>
+                                    <td>{{objeto_del_menu.descripcion}}</td>
+                                    <td>{{objeto_del_menu.precio}}</td>
+                                    <td><input type="number" class="cantidad-input" value="1" min="1"></td>
+                                    <td><button class="pedir-button">Pedir</button></td>
+                                {%endif%}
+                            {% endfor %}
                             <tr>
                                 <td><i class="fas fa-pizza-slice"></i> Pizza</td>
                                 <td>Pizza Napolitana</td>
@@ -63,46 +75,9 @@
                                 <td><input type="number" class="cantidad-input" value="1" min="1"></td>
                                 <td>Pizza clásica italiana con salsa de tomate, mozzarella fresca y albahaca.</td>
                                 <td><button class="pedir-button" onclick="addToOrder('Pizza', 600, this)">Pedir</button></td>
-                            </tr>
-                            <tr>
-                                <td><i class="fas fa-utensils"></i> Empanada</td>
-                                <td>Empanada de Humita</td>
-                                <td>Empanada</td>
-                                <td>$250</td>
-                                <td><input type="number" class="cantidad-input" value="1" min="1"></td>
-                                <td>Empanada rellena de una mezcla cremosa de maíz y queso, a menudo sazonada con cebollas, pimientos y especias.</td>
-                                <td><button class="pedir-button" onclick="addToOrder('Empanada de Humita', 250, this)">Pedir</button></td>
-                            </tr>
-                            <tr>
-                                <td><i class="fas fa-drumstick-bite"></i> Milanesa</td>
-                                <td>Milanesa Napolitana</td>
-                                <td>Milanesa</td>
-                                <td>$400</td>
-                                <td><input type="number" class="cantidad-input" value="1" min="1"></td>
-                                <td>Plato inspirado en la cocina italiana que presenta una chuleta de ternera empanada y frita cubierta con salsa de tomate, mozzarella y, a veces, jamón o champiñones. Se suele servir con espaguetis o puré de patatas.</td>
-                                <td><button class="pedir-button" onclick="addToOrder('Milanesa Napolitana', 400, this)">Pedir</button></td>
-                            </tr>
-                            <tr>
-                                <td><i class="fas fa-cocktail"></i> Papas fritas</td>
-                                <td>Papas fritas</td>
-                                <td>Papas</td>
-                                <td>$1500</td>
-                                <td><input type="number" class="cantidad-input" value="1" min="1"></td>
-                                <td>Las mejores papas del condado!!!.</td>
-                                <td><button class="pedir-button" onclick="addToOrder('Papas fritas', 1500, this)">Pedir</button></td>
-                            </tr>
-                            <tr>
-                                <td><i class="fas fa-cocktail"></i> Ensalada</td>
-                                <td>Ensalada</td>
-                                <td>Ensalada</td>
-                                <td>$500</td>
-                                <td><input type="number" class="cantidad-input" value="1" min="1"></td>
-                                <td>Una ensaladita fresca pal calor.</td>
-                                <td><button class="pedir-button" onclick="addToOrder('Ensalada', 500, this)">Pedir</button></td>
-                            </tr>
+                            </tr>                            
                         </tbody>
-                    </table>
-                     
+                    </table>                     
                 </div>
               </div>
             </div>
@@ -116,16 +91,34 @@
                 <div class="accordion-body">
                     <table>
                         <thead>
-                            <tr>
-                                <th>Bebida</th>
-                                <th>Tipo</th>
+                           <tr>
+                                <th>Objeto</th>
+                                <th>Nombre del producto</th>
+                                <th>Subtipo de plato o bebida</th>
+                                <th>Descripción</th>
                                 <th>Precio</th>
                                 <th>Cantidad</th>
-                                <th>Descripción</th>
                                 <th>Pedir</th>
                             </tr>
                         </thead>
                         <tbody>
+                            {% for objeto_del_menu in objetos_menu %}
+                                {% if objeto_del_menu.objeto == 'bebida' %}
+                                    {% if objeto_del_menu.subtipo == 'cerveza' or  objeto_del_menu.subtipo == 'Cerveza'%}
+                                    <td><i class="fas fa-beer"></i></td>
+                                    {% endif %}
+                                    <td>{{objeto_del_menu.nombre_del_producto}}</td>
+                                    <td>{{objeto_del_menu.subtipo}}</td>
+                                    <td>{{objeto_del_menu.descripcion}}</td>
+                                    <td>{{objeto_del_menu.precio}}</td>
+                                    <td><input type="number" class="cantidad-input" value="1" min="1"></td>
+                                    <td><button class="pedir-button">Pedir</button></td>
+                                {%endif%}
+                                {% empty %}
+                                <td>
+                                    <p>No hay un menú disponible</p>
+                                </td>
+                            {% endfor %}
                             <tr>
                                 <td><i class="fas fa-cocktail"></i> Coca-Cola</td>
                                 <td>Coca-Cola</td>
