@@ -34,7 +34,7 @@ section:hover {
 
 a {
     text-decoration: none;
-    color: #131212;
+    color: #131212 !important;
 }
 
 a:hover{

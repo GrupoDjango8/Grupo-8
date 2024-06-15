@@ -4,13 +4,15 @@
 {% block titulo %}Inicio{% endblock %}
 {% block extracss %}
     <link rel="stylesheet" href="{% static 'webGOcho/styles/index.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 {% endblock %}
 <!--Agregar en main las funcionalidades propias del index-->
 {% block main %}
     <section id="pedidos">
         <h2>Pedidos</h2>
         <label for="reservarMesa">Reservar mesa disponible:</label>
-        <select id="reservarMesa" name="reservarMesa" onchange="redirectToForm()">
+        <select id="reservarMesa" name="reservarMesa">
             <option value="">Selecciona una mesa</option>
             <option value="1">Mesa 1</option>
             <option value="2">Mesa 2</option>
@@ -29,35 +31,172 @@
             }
         </script>
     </section>
-    <section id="comidas">
-        <h2>Comidas</h2>
-        <label for="tipoComida">Elige una comida:</label>
-        <select id="tipoComida" name="tipoComida">
-            <option value="pizzas">Pizzas</option>
-            <option value="empanadas">Empanadas</option>
-        </select>
+    <section id="comidas bebidas">
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                  Comidas
+                </button>
+              </h2>
+              <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    <!-- Placeholder content for this accordion, which is intended to demonstrate the 
+                    <code>.accordion-flush</code> class. This is the first item's accordion body. -->
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Plato</th>
+                                <th>Tipo</th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                                <th>Descripción</th>
+                                <th>Pedir</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><i class="fas fa-pizza-slice"></i> Pizza</td>
+                                <td>Pizza Napolitana</td>
+                                <td>Pizza</td>
+                                <td>$600</td>
+                                <td><input type="number" class="cantidad-input" value="1" min="1"></td>
+                                <td>Pizza clásica italiana con salsa de tomate, mozzarella fresca y albahaca.</td>
+                                <td><button class="pedir-button" onclick="addToOrder('Pizza', 600, this)">Pedir</button></td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-utensils"></i> Empanada</td>
+                                <td>Empanada de Humita</td>
+                                <td>Empanada</td>
+                                <td>$250</td>
+                                <td><input type="number" class="cantidad-input" value="1" min="1"></td>
+                                <td>Empanada rellena de una mezcla cremosa de maíz y queso, a menudo sazonada con cebollas, pimientos y especias.</td>
+                                <td><button class="pedir-button" onclick="addToOrder('Empanada de Humita', 250, this)">Pedir</button></td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-drumstick-bite"></i> Milanesa</td>
+                                <td>Milanesa Napolitana</td>
+                                <td>Milanesa</td>
+                                <td>$400</td>
+                                <td><input type="number" class="cantidad-input" value="1" min="1"></td>
+                                <td>Plato inspirado en la cocina italiana que presenta una chuleta de ternera empanada y frita cubierta con salsa de tomate, mozzarella y, a veces, jamón o champiñones. Se suele servir con espaguetis o puré de patatas.</td>
+                                <td><button class="pedir-button" onclick="addToOrder('Milanesa Napolitana', 400, this)">Pedir</button></td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-cocktail"></i> Papas fritas</td>
+                                <td>Papas fritas</td>
+                                <td>Papas</td>
+                                <td>$1500</td>
+                                <td><input type="number" class="cantidad-input" value="1" min="1"></td>
+                                <td>Las mejores papas del condado!!!.</td>
+                                <td><button class="pedir-button" onclick="addToOrder('Papas fritas', 1500, this)">Pedir</button></td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-cocktail"></i> Ensalada</td>
+                                <td>Ensalada</td>
+                                <td>Ensalada</td>
+                                <td>$500</td>
+                                <td><input type="number" class="cantidad-input" value="1" min="1"></td>
+                                <td>Una ensaladita fresca pal calor.</td>
+                                <td><button class="pedir-button" onclick="addToOrder('Ensalada', 500, this)">Pedir</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                     
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                  Bebidas
+                </button>
+              </h2>
+              <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Bebida</th>
+                                <th>Tipo</th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                                <th>Descripción</th>
+                                <th>Pedir</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><i class="fas fa-cocktail"></i> Coca-Cola</td>
+                                <td>Coca-Cola</td>
+                                <td>Gaseosa</td>
+                                <td>$150</td>
+                                <td><input type="number" class="cantidad-input" value="1" min="1"></td>
+                                <td>Bebida gaseosa sabor cola clásica. Ideal para refrescarse.</td>
+                                <td><button class="pedir-button" onclick="addToOrder('Coca-Cola', 150, this)">Pedir</button></td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-cocktail"></i> Coca-Cola</td>
+                                <td>Sprite</td>
+                                <td>Gaseosa</td>
+                                <td>$150</td>
+                                <td><input type="number" class="cantidad-input" value="1" min="1"></td>
+                                <td>Bebida gaseosa sabor lima-limón. Refrescante y ligera.</td>
+                                <td><button class="pedir-button" onclick="addToOrder('Coca-Cola', 150, this)">Pedir</button></td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-beer"></i> Stella Artois</td>
+                                <td>Quilmes</td>
+                                <td>Cerveza</td>
+                                <td>$250</td>
+                                <td><input type="number" class="cantidad-input" value="1" min="1"></td>
+                                <td>Cerveza rubia tipo lager argentina. Sabor suave y refrescante.</td>
+                                <td><button class="pedir-button" onclick="addToOrder('Cerveza', 250, this)">Pedir</button></td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-beer"></i> Stella Artois</td>
+                                <td>Stella Artois</td>
+                                <td>Cerveza</td>
+                                <td>$300</td>
+                                <td><input type="number" class="cantidad-input" value="1" min="1"></td>
+                                <td>Cerveza belga tipo lager. Sabor maltoso y ligeramente amargo.</td>
+                                <td><button class="pedir-button" onclick="addToOrder('Cerveza', 300, this)">Pedir</button></td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-wine-bottle"></i> Cabernet Sauvignon</td>
+                                <td>Malbec</td>
+                                <td>Vino</td>
+                                <td>$400</td>
+                                <td><input type="number" class="cantidad-input" value="1" min="1"></td>
+                                <td>Vino tinto argentino varietal Malbec. Sabor intenso y frutado.</td>
+                                <td><button class="pedir-button" onclick="addToOrder('Vino', 400, this)">Pedir</button></td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-wine-bottle"></i> Cabernet Sauvignon</td>
+                                <td>Cabernet Sauvignon</td>
+                                <td>Vino</td>
+                                <td>$450</td>
+                                <td><input type="number" class="cantidad-input" value="1" min="1"></td>
+                                <td>Vino tinto argentino varietal Cabernet Sauvignon. Sabor complejo y especiado.</td>
+                                <td><button class="pedir-button" onclick="addToOrder('Vino', 450, this)">Pedir</button></td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+            </div> 
+          </div>
     </section>
-    <section id="bebidas">
-        <h2>Bebidas</h2>
-        <label for="tipoBebida">Elige una bebida:</label>
-        <select id="tipoBebida" name="tipoBebida">
-            {%for bebida in bebidas%}
-                <option value="">{{bebida.0}} precio: {{bebida.1}}</option>
-            {% empty %}
-                <option value=""><p>No hay bebidas disponibles</p></option>
-            {% endfor %}
-            <!-- <option value="gaseosa">Gaseosa</option>
-            <option value="vino">Vino</option>
-            <option value="cerveza">Cerveza</option> -->
-            <!-- {% for alumno in alumnos %}
-                <article>
-                    <p>{{ alumno | upper }}</p>
-                </article>
-                {% empty %}
-                <article>
-                    <p>No hay alumnos inscriptos</p>
-                </article>
-                {% endfor %} -->
-        </select>
+    <section id="total-pedido">
+        <h2>Total del Pedido</h2>
+        <p id="total">Total: $0.00</p>
     </section>
+
+    <div class="form-group mt-3">
+        <label for="mensaje">ESCRIBIR MENSAJE:</label>
+        <textarea class="form-control" id="mensaje" rows="3" placeholder="Escribe tu mensaje aquí..."></textarea>
+    </div>
+    <button class="btn btn-danger centrado">Enviar</button>
 {% endblock %}
+
