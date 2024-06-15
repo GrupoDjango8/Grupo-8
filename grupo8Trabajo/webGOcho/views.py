@@ -11,7 +11,7 @@ def index(request):
     contexto = {
         'objetos_menu': menu
     }
-    print(contexto['objetos_menu'])
+    #print(contexto['objetos_menu'])
     return render(request, "webGOcho/index.html", contexto)
 
 #Renderizado del registro
