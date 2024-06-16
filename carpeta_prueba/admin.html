@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo 8 - CaC - Admin</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Admin - Grupo 8</h1>
+    </header>
+    <main>
+        <section id="productos">
+            <h2>Lista de Productos</h2>
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                      Comidas
+                    </button>
+                  </h2>
+                  <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Plato</th>
+                                    <th>Tipo</th>
+                                    <th>Precio</th>
+                                    
+                                    <th>Descripción</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="comidasTable">
+                                <!-- Acá metemos los productitos, Matute y Giana -->
+                                <tr>
+                                    <td><i class="fas fa-pizza-slice"></i> Pizza</td>
+                                    <td>Pizza Napolitana</td>
+                                    <td>$600</td>
+                                    
+                                    <td>Pizza clásica italiana con salsa de tomate, mozzarella fresca y albahaca.</td>
+                                    <td>
+                                        <button class="btn btn-primary" onclick="editProduct(this)">Editar</button>
+                                        <button class="btn btn-danger" onclick="deleteProduct(this)">Eliminar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><i class="fas fa-utensils"></i> Empanada</td>
+                                    <td>Empanada de Humita</td>
+                                    <td>$250</td>
+                                    
+                                    <td>Empanada rellena de una mezcla cremosa de maíz y queso, a menudo sazonada con cebollas, pimientos y especias.</td>
+                                    <td>
+                                        <button class="btn btn-primary" onclick="editProduct(this)">Editar</button>
+                                        <button class="btn btn-danger" onclick="deleteProduct(this)">Eliminar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="flush-headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                      Bebidas
+                    </button>
+                  </h2>
+                  <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Bebida</th>
+                                    <th>Tipo</th>
+                                    <th>Precio</th>
+                                    <th>Descripción</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bebidasTable">
+                                <!-- Y acá las bebiditassssssssssssss -->
+                                <tr>
+                                    <td><i class="fas fa-cocktail"></i> Coca-Cola</td>
+                                    <td>Gaseosa</td>
+                                    <td>$150</td>
+                                  
+                                    <td>Bebida gaseosa sabor cola clásica. Ideal para refrescarse.</td>
+                                    <td>
+                                        <button class="btn btn-primary" onclick="editProduct(this)">Editar</button>
+                                        <button class="btn btn-danger" onclick="deleteProduct(this)">Eliminar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+        </section>
+        <section id="agregarProducto">
+            <h2>Agregar Producto</h2>
+            <form id="productoForm" onsubmit="return agregarProducto()">
+                <div class="mb-3">
+                    <label for="categoria" class="form-label">Categoría</label>
+                    <select class="form-control" id="categoria" required>
+                        <option value="comidas">Comidas</option>
+                        <option value="bebidas">Bebidas</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="plato" class="form-label">Plato/Bebida</label>
+                    <input type="text" class="form-control" id="plato" required>
+                </div>
+                <div class="mb-3">
+                    <label for="tipo" class="form-label">Tipo</label>
+                    <input type="text" class="form-control" id="tipo" required>
+                </div>
+                <div class="mb-3">
+                    <label for="precio" class="form-label">Precio</label>
+                    <input type="number" class="form-control" id="precio" required min="1"> 
+                </div>
+               
+                <div class="mb-3">
+                    <label for="descripcion" class="form-label">Descripción</label>
+                    <textarea class="form-control" id="descripcion" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-success">Agregar</button>
+            </form>
+        </section>
+        <section id="pedidos">
+            <h2>Pedidos</h2>
+            <form id="pedidoForm" onsubmit="return agregarPedido()">
+                <div class="mb-3">
+                    <label for="cliente" class="form-label">Cliente</label>
+                    <input type="text" class="form-control" id="cliente" required>
+                </div>
+                <div class="mb-3">
+                    <label for="producto" class="form-label">Producto</label>
+                    <input type="text" class="form-control" id="producto" required>
+                </div>
+                <div class="mb-3">
+                    <label for="nroMesa" class="form-label">Nro. de Mesa</label>
+                    <input type="number" class="form-control" id="nroMesa" required min="1" max="20">
+                </div>
+                <button type="submit" class="btn btn-success">Agregar Pedido</button>
+            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Producto</th>
+                        <th>Nro. de Mesa</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="pedidosTable">
+                    <!-- Acá van a ir los pediditosssssssssssssss -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <p><strong>Todos los derechos reservados - Grupo 8 - Codo a codo 2024</strong></p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <script>
+        let editingRow = null;
+
+        function showAlert(message, type) {
+            var alertPlaceholder = document.createElement('div');
+            alertPlaceholder.innerHTML = `<div class="alert alert-${type} alert-dismissible" role="alert">
+                ${message}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>`;
+            document.body.appendChild(alertPlaceholder);
+            setTimeout(() => {
+                alertPlaceholder.remove();
+            }, 3000);
+        }
+
+        function editProduct(button) {
+            var row = button.parentElement.parentElement;
+            editingRow = row;
+
+            var cells = row.getElementsByTagName('td');
+            var plato = cells[0].innerText;
+            var tipo = cells[1].innerText;
+            var precio = cells[2].innerText.replace('$', '');
+            var descripcion = cells[4].innerText;
+
+            document.getElementById('plato').value = plato;
+            document.getElementById('tipo').value = tipo;
+            document.getElementById('precio').value = precio;
+            
+            document.getElementById('descripcion').value = descripcion;
+
+            var categoria = plato.includes('Bebida') ? 'bebidas' : 'comidas';
+            document.getElementById('categoria').value = categoria;
+        }
+
+        function deleteProduct(button) {
+            button.parentElement.parentElement.remove();
+            showAlert('Producto eliminado', 'danger');
+        }
+
+        function agregarProducto() {
+            var categoria = document.getElementById('categoria').value;
+            var plato = document.getElementById('plato').value;
+            var tipo = document.getElementById('tipo').value;
+            var precio = document.getElementById('precio').value;
+            
+            var descripcion = document.getElementById('descripcion').value;
+
+            var tableBody = categoria === 'bebidas' ? document.getElementById('bebidasTable') : document.getElementById('comidasTable');
+
+            if (editingRow) {
+                editingRow.innerHTML = `
+                    <td>${categoria === 'bebidas' ? '<i class="fas fa-cocktail"></i>' : '<i class="fas fa-utensils"></i>'} ${plato}</td>
+                    <td>${tipo}</td>
+                    <td>$${precio}</td>                    
+                    <td>${descripcion}</td>
+                    <td>
+                        <button class="btn btn-primary" onclick="editProduct(this)">Editar</button>
+                        <button class="btn btn-danger" onclick="deleteProduct(this)">Eliminar</button>
+                    </td>
+                `;
+                showAlert('Producto editado', 'success');
+                editingRow = null;
+            } else {
+                var newRow = `
+                    <tr>
+                        <td>${categoria === 'bebidas' ? '<i class="fas fa-cocktail"></i>' : '<i class="fas fa-utensils"></i>'} ${plato}</td>
+                        <td>${tipo}</td>
+                        <td>$${precio}</td>                        
+                        <td>${descripcion}</td>
+                        <td>
+                            <button class="btn btn-primary" onclick="editProduct(this)">Editar</button>
+                            <button class="btn btn-danger" onclick="deleteProduct(this)">Eliminar</button>
+                        </td>
+                    </tr>
+                `;
+                tableBody.innerHTML += newRow;
+                showAlert('Producto agregado', 'success');
+            }
+
+            document.getElementById('productoForm').reset();
+            return false;
+        }
+
+        function agregarPedido() {
+            var cliente = document.getElementById('cliente').value;
+            var producto = document.getElementById('producto').value;
+            var nroMesa = document.getElementById('nroMesa').value;
+            var tableBody = document.getElementById('pedidosTable');
+            var newRow = `
+                <tr>
+                    <td>${cliente}</td>
+                    <td>${producto}</td>                    
+                    <td>${nroMesa}</td>
+                    <td>
+                        <button class="btn btn-danger" onclick="deletePedido(this)">Eliminar</button>
+                    </td>
+                </tr>
+            `;
+            tableBody.innerHTML += newRow;
+
+            document.getElementById('pedidoForm').reset();
+            return false;
+        }
+
+        function deletePedido(button) {
+            button.parentElement.parentElement.remove();
+            showAlert('Pedido eliminado', 'danger');
+        }
+    </script>
+</body>
+</html>
