@@ -107,33 +107,7 @@
     </section>
     <section id="agregarProducto">
         <h2>Agregar Producto</h2>
-        <form id="productoForm" onsubmit="return agregarProducto()">
-            <div class="mb-3">
-                <label for="categoria" class="form-label">Categoría</label>
-                <select class="form-control" id="categoria" required>
-                    <option value="comidas">Comidas</option>
-                    <option value="bebidas">Bebidas</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="plato" class="form-label">Plato/Bebida</label>
-                <input type="text" class="form-control" id="plato" required>
-            </div>
-            <div class="mb-3">
-                <label for="tipo" class="form-label">Tipo</label>
-                <input type="text" class="form-control" id="tipo" required>
-            </div>
-            <div class="mb-3">
-                <label for="precio" class="form-label">Precio</label>
-                <input type="number" class="form-control" id="precio" required min="1"> 
-            </div>
-           
-            <div class="mb-3">
-                <label for="descripcion" class="form-label">Descripción</label>
-                <textarea class="form-control" id="descripcion" rows="3" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-success">Agregar</button>
-        </form>
+        <button type="submit" class="btn btn-success"><a href="{% url 'alta_producto' %}">Agregar</a></button>
     </section>
     <section id="pedidos">
         <h2>Pedidos</h2>

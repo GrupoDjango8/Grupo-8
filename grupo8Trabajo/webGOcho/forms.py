@@ -41,26 +41,15 @@ class AltaProductoForm(forms.Form):
 
         return self.cleaned_data["objeto"]
     
-    def clean_nombre_del_producto(self):
-        if not self.cleaned_data["nombre_del_producto"].isalpha():
-            raise ValidationError("El producto solo puede estar compuesto por letras")
-
-        return self.cleaned_data["nombre_del_producto"]
-    
     def clean_subtipo(self):
         if not self.cleaned_data["subtipo"].isalpha():
             raise ValidationError("El tipo de comida/bebida solo puede contener letras y números")
 
         return self.cleaned_data["subtipo"]
 
-    def clean_descripcion(self):
-        # Se puede agregar validación para la descripción, si se desea
-        # Ej: longitud máxima, caracteres permitidos, etc.
-
-        return self.cleaned_data["descripcion"]
 
     def clean_precio(self):
-        if not isinstance(self.cleaned_data["dni"], int):
+        if not isinstance(self.cleaned_data["precio"], int):
             raise ValidationError("El precio debe ser un número")
         
         if self.cleaned_data["precio"] <= 0:
