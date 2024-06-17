@@ -46,3 +46,7 @@ def registro(request):
         # Se renderiza un form con mensajes de error  
 
     return render(request, "webGOcho/registro.html", contexto)
+
+def administracion(request):
+    contexto = {}
+    return render(request, "webGOcho/administracion.html", contexto)
