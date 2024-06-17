@@ -31,35 +31,30 @@
                                 <th>Plato</th>
                                 <th>Tipo</th>
                                 <th>Precio</th>
-                                
                                 <th>Descripción</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
                         <tbody id="comidasTable">
                             <!-- Acá metemos los productitos, Matute y Giana -->
-                            <tr>
-                                <td><i class="fas fa-pizza-slice"></i> Pizza</td>
-                                <td>Pizza Napolitana</td>
-                                <td>$600</td>
-                                
-                                <td>Pizza clásica italiana con salsa de tomate, mozzarella fresca y albahaca.</td>
+                            {% for objeto_del_menu in objetos_menu %}
+                                {% if objeto_del_menu.objeto == 'comida' %}
+                                <tr>
+                                    <td>{{objeto_del_menu.nombre_del_producto}}</td>
+                                    <td>{{objeto_del_menu.subtipo}}</td>
+                                    <td>{{objeto_del_menu.precio}}</td>
+                                    <td>{{objeto_del_menu.descripcion}}</td>
+                                    <td>
+                                        <button class="btn btn-primary" onclick="editProduct(this)">Editar</button>
+                                        <button class="btn btn-danger" onclick="deleteProduct(this)">Eliminar</button>
+                                    </td>
+                                </tr>
+                                {%endif%}
+                            {% empty %}
                                 <td>
-                                    <button class="btn btn-primary" onclick="editProduct(this)">Editar</button>
-                                    <button class="btn btn-danger" onclick="deleteProduct(this)">Eliminar</button>
+                                    <p>No hay un menú disponible</p>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td><i class="fas fa-utensils"></i> Empanada</td>
-                                <td>Empanada de Humita</td>
-                                <td>$250</td>
-                                
-                                <td>Empanada rellena de una mezcla cremosa de maíz y queso, a menudo sazonada con cebollas, pimientos y especias.</td>
-                                <td>
-                                    <button class="btn btn-primary" onclick="editProduct(this)">Editar</button>
-                                    <button class="btn btn-danger" onclick="deleteProduct(this)">Eliminar</button>
-                                </td>
-                            </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
@@ -85,17 +80,24 @@
                         </thead>
                         <tbody id="bebidasTable">
                             <!-- Y acá las bebiditassssssssssssss -->
-                            <tr>
-                                <td><i class="fas fa-cocktail"></i> Coca-Cola</td>
-                                <td>Gaseosa</td>
-                                <td>$150</td>
-                              
-                                <td>Bebida gaseosa sabor cola clásica. Ideal para refrescarse.</td>
-                                <td>
-                                    <button class="btn btn-primary" onclick="editProduct(this)">Editar</button>
-                                    <button class="btn btn-danger" onclick="deleteProduct(this)">Eliminar</button>
-                                </td>
-                            </tr>
+                                {% for objeto_del_menu in objetos_menu %}
+                                    {% if objeto_del_menu.objeto == 'bebida' %}
+                                    <tr>
+                                        <td>{{objeto_del_menu.nombre_del_producto}}</td>
+                                        <td>{{objeto_del_menu.subtipo}}</td>
+                                        <td>{{objeto_del_menu.precio}}</td>
+                                        <td>{{objeto_del_menu.descripcion}}</td>
+                                        <td>
+                                            <button class="btn btn-primary" onclick="editProduct(this)">Editar</button>
+                                            <button class="btn btn-danger" onclick="deleteProduct(this)">Eliminar</button>
+                                        </td>
+                                    </tr>
+                                    {%endif%}
+                                {% empty %}
+                                    <td>
+                                        <p>No hay un menú disponible</p>
+                                    </td>
+                                {% endfor %}
                         </tbody>
                     </table>
                 </div>

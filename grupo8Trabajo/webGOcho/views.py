@@ -48,5 +48,8 @@ def registro(request):
     return render(request, "webGOcho/registro.html", contexto)
 
 def administracion(request):
-    contexto = {}
+    menu = Menu.objects.all()
+    contexto = {
+        'objetos_menu': menu
+    }
     return render(request, "webGOcho/administracion.html", contexto)
