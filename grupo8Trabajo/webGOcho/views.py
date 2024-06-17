@@ -46,3 +46,42 @@ def registro(request):
         # Se renderiza un form con mensajes de error  
 
     return render(request, "webGOcho/registro.html", contexto)
+
+def administracion(request):
+    menu = Menu.objects.all()
+    contexto = {
+        'objetos_menu': menu
+    }
+    return render(request, "webGOcho/administracion.html", contexto)
+
+def alta_producto(request):
+    contexto = {
+        'alta_producto': AltaProductoForm()
+    }
+
+    if request.method == "GET":
+        contexto['alta_producto'] = AltaProductoForm()
+    
+    else: # Asumo que es un POST
+        form = AltaProductoForm(request.POST)
+        contexto['alta_producto'] = form
+        
+        # Validar el form
+        if form.is_valid():
+            # Si el form es correcto
+            # Lo redirijo a una vista segura por ejemplo el index
+            nuevo_producto = Menu(
+                objeto = form.cleaned_data['objeto'],
+                nombre_del_producto = form.cleaned_data['nombre_del_producto'],
+                subtipo = form.cleaned_data['subtipo'],
+                descripcion = form.cleaned_data['descripcion'],
+                precio = form.cleaned_data['precio'],
+            )
+            nuevo_producto.save()
+            messages.success(request, 'El producto fue dado de alta con éxito')
+            return redirect('administracion')
+
+        # Si el form es incorrecto
+        # Se renderiza un form con mensajes de error  
+
+    return render(request, "webGOcho/alta_producto.html", contexto)

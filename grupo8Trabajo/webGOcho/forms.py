@@ -27,4 +27,32 @@ class AltaClienteForm(forms.Form):
 
         return self.cleaned_data["dni"]
 
+
+class AltaProductoForm(forms.Form):
+    objeto = forms.CharField(label='Objeto', required=True)
+    nombre_del_producto = forms.CharField(label='Nombre del producto',required=True)
+    subtipo = forms.CharField(label='Tipo de comida/bebida',required=True)
+    descripcion = forms.CharField(label='Descripción',required=True)
+    precio = forms.IntegerField(label='Precio',required=True)
+
+    def clean_objeto(self):
+        if not self.cleaned_data["objeto"].isalpha():
+            raise ValidationError("El objeto solo puede estar compuesto por letras")
+
+        return self.cleaned_data["objeto"]
     
+    def clean_subtipo(self):
+        if not self.cleaned_data["subtipo"].isalpha():
+            raise ValidationError("El tipo de comida/bebida solo puede contener letras y números")
+
+        return self.cleaned_data["subtipo"]
+
+
+    def clean_precio(self):
+        if not isinstance(self.cleaned_data["precio"], int):
+            raise ValidationError("El precio debe ser un número")
+        
+        if self.cleaned_data["precio"] <= 0:
+            raise ValidationError("El precio debe ser un número mayor que 0")
+        
+        return self.cleaned_data["precio"]
