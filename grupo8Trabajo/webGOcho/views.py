@@ -4,6 +4,7 @@ from .forms import *
 from django.contrib import messages
 from .models import Cliente, Menu
 # Create your views here.
+
 #Renderizado del index
 def index(request):
     # Hay que harcodear esto
@@ -48,6 +49,8 @@ def registro(request):
 
     return render(request, "webGOcho/registro.html", contexto)
 
+
+#Acá administra el administrador 
 def administracion(request):
     menu = Menu.objects.all()
     contexto = {
@@ -86,3 +89,11 @@ def alta_producto(request):
         # Se renderiza un form con mensajes de error  
 
     return render(request, "webGOcho/alta_producto.html", contexto)
+
+
+#Eliminar un producto
+def eliminar(request, id_obj):
+    objeto = Menu.objects.get(pk=id_obj)
+    objeto.delete()
+    objetos = Menu.objects.all()
+    return render(request,  "webGOcho/administracion.html", {"objetos_menu":objetos})

@@ -5,5 +5,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('registro/', views.registro, name='registro'),
     path('administracion/', views.administracion, name='administracion'),
-    path('alta_producto/', views.alta_producto, name='alta_producto')
+    path('alta_producto/', views.alta_producto, name='alta_producto'),
+    path('eliminar_menu/<int:id_obj>', views.eliminar,name='eliminar')
 ]

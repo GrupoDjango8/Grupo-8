@@ -46,7 +46,7 @@
                                     <td>{{objeto_del_menu.descripcion}}</td>
                                     <td>
                                         <button class="btn btn-primary" onclick="editProduct(this)">Editar</button>
-                                        <button class="btn btn-danger" onclick="deleteProduct(this)">Eliminar</button>
+                                        <a class="btn btn-danger" href="{% url 'eliminar' objeto_del_menu.id %}">Eliminar</a>
                                     </td>
                                 </tr>
                                 {%endif%}
@@ -88,8 +88,8 @@
                                         <td>{{objeto_del_menu.precio}}</td>
                                         <td>{{objeto_del_menu.descripcion}}</td>
                                         <td>
-                                            <button class="btn btn-primary" onclick="editProduct(this)">Editar</button>
-                                            <button class="btn btn-danger" onclick="deleteProduct(this)">Eliminar</button>
+                                            <button class="btn btn-primary">Editar</button>
+                                            <a class="btn btn-danger" href="{% url 'eliminar' objeto_del_menu.id %}">Eliminar</a>
                                         </td>
                                     </tr>
                                     {%endif%}
