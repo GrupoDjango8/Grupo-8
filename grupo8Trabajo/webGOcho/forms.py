@@ -1,6 +1,7 @@
+from typing import Any
 from django import forms
 from django.core.exceptions import ValidationError
-
+from .models import Cliente
 class AltaClienteForm(forms.Form):
     nombre= forms.CharField(label='Nombre del cliente',required=True)
     apellido = forms.CharField(label='Apellido del cliente',required=True)
@@ -27,7 +28,13 @@ class AltaClienteForm(forms.Form):
 
         return self.cleaned_data["dni"]
 
-
+    def clean_numero_mesa(self):
+        clientes = Cliente.objects.all()
+        for cliente in clientes:
+            if int(cliente.numero_mesa) == int(self.cleaned_data["numero_mesa"]):
+                raise ValidationError("El número está ocupado")
+        return self.cleaned_data["numero_mesa"]
+    
 class AltaProductoForm(forms.Form):
     objeto = forms.CharField(label='Objeto', required=True)
     nombre_del_producto = forms.CharField(label='Nombre del producto',required=True)

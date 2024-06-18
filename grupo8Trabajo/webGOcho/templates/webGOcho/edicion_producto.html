@@ -11,5 +11,12 @@
 <div class="row">
     <div class="col-md-4 offset-md-4">
         <h2>Edición de Objeto del menu</h2>
-       
+        <div class="container">
+            <h1>Formulario de Registro</h1>
+            <form id="productoForm" method="POST" action="#">
+                {% csrf_token %}
+                {{ editar_producto }}
+                <button type="submit" class="btn btn-success">Agregar</button>
+            </form>
+        </div>
 {% endblock %}

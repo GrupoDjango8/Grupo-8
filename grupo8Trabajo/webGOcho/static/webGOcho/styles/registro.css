@@ -1,4 +1,4 @@
-*{
+/* *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -22,7 +22,7 @@ header,footer{
     text-align: center;
     padding: 10px;
     background-color: #333;
-    color: #fff;
+    color: #000000;
 }
 
 header{
@@ -84,4 +84,4 @@ button{
 footer{
     display: flex;
     text-align: justify;
-}
+} */

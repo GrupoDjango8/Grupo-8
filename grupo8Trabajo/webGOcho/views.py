@@ -97,3 +97,7 @@ def eliminar(request, id_obj):
     objeto.delete()
     objetos = Menu.objects.all()
     return render(request,  "webGOcho/administracion.html", {"objetos_menu":objetos})
+
+
+""" def edicion_producto(request,id):
+    return(render(request,'edicion_producto.html')) """
