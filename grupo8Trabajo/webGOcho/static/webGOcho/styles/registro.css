@@ -1,4 +1,4 @@
-/* *{
+*{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -14,6 +14,7 @@ body{
     background:url(imagen/imagen1.jpg);
     background-size: cover;
     padding: 20px;
+    background-color: #d8a9a9;
 }
 
 
@@ -54,7 +55,7 @@ form{
 label{
     margin-bottom: 5px;
     font-weight: bold;
-    color:rgb(253, 250, 252)
+    color:rgb(0, 0, 0)
 }
 
 input[type="text"]{
@@ -79,9 +80,9 @@ button{
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
-
+    margin-top: 2%;
 }
 footer{
     display: flex;
     text-align: justify;
-} */
+}
