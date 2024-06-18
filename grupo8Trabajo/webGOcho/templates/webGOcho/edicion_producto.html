@@ -11,35 +11,5 @@
 <div class="row">
     <div class="col-md-4 offset-md-4">
         <h2>Edición de Objeto del menu</h2>
-        <div class="card">
-            <div class="card-body">
-                <form action="/editar_producto/" method="POST">{% csrf_token %}
-                    <div class="form-group">
-                        <input type="text" id="txtId" name="txtId" value="{{objeto.id}}" class="form-control" placeholder="Código del objeto"
-                            minlength="6" maxlength="6" readonly required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="txtnombre_del_producto" name="txtnombre_del_producto" value="{{objeto.nombre_del_producto}}" class="form-control" placeholder="Plato"
-                            maxlength="50" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="txtsubtipo" name="txtsubtipo" value="{{objeto.subtipo}}" class="form-control" class="form-control" placeholder="SubtipoPlato"
-                        maxlength="50" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="numprecio" name="numprecio" value="{{objeto.precio}}" class="form-control" min="1" max="9"
-                            value="1" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="txtdescripcion" name="txtdescripcion" value="{{objeto.descripcion}}" class="form-control" placeholder="Descripcion"
-                            maxlength="50" required>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+       
 {% endblock %}
