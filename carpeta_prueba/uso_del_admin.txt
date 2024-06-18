@@ -1,0 +1,8 @@
+Chicos agrego esto para que tengan en cuenta:
+Si entran a http://127.0.0.1:8000/admin/ entran al admin, pero no van a poder ingresar hasta que creen un super user.
+Para crear un super user, deben correr el comando python manage.py createsuperuser en la terminal
+y luego seguir las instrucciones para crear el usuario.
+Por favor, anotense la contraseña y copienla y peguenla para que no haya ninguna falla.
+Una vez que hagan eso vuelven a entrar a http://127.0.0.1:8000/admin/ y ahí ingresan el usuario y la contraseña.
+Deberían aparecerles los modelos. 
+Cualquier cosa nos escribimos si ven esto antes de la llamada.
