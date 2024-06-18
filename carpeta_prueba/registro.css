@@ -11,7 +11,7 @@ body{
     justify-content: center;
     align-items:center;
     min-height: 100vh;
-    background:url(imagen/imagen1.jpg);
+    background:url(grupo8Trabajo\webGOcho\static\webGOcho\img\imagen1.jpg);
     background-size: cover;
     padding: 20px;
 }
