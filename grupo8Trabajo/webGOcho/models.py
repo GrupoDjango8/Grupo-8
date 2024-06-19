@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from grupo8Trabajo import settings
 # Create your models here.
 
 ##Cliente:               
@@ -75,5 +76,19 @@ class PedidoItem(models.Model):
     menu = models.ForeignKey(Menu, on_delete=models.CASCADE)
     cantidad = models.IntegerField(default=1)
 
+#modelo del administrador
+class AdministradorNegocio(models.Model):
+    nombre = models.CharField(max_length=100, verbose_name="Nombre")
+    apellido = models.CharField(max_length=100, verbose_name="Apellido")
+    dni = models.IntegerField(verbose_name="DNI", unique=True)
+    email = models.EmailField(verbose_name='Email')
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True
+    )
+    def __str__(self):
+        return f"{self.nombre} | {self.apellido} | DNI:{self.dni}"
 
     

@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from .forms import *
 from django.contrib import messages
+from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 from .models import Cliente, Menu
 # Create your views here.
 
@@ -50,7 +52,14 @@ def registro(request):
     return render(request, "webGOcho/registro.html", contexto)
 
 
+def user_logout(request):
+    logout(request)
+    messages.success(request, 'Sesion Cerrada')
+    return(redirect('index'))
+
+
 #Acá administra el administrador 
+@login_required
 def administracion(request):
     menu = Menu.objects.all()
     contexto = {
