@@ -62,8 +62,10 @@ def user_logout(request):
 @login_required
 def administracion(request):
     menu = Menu.objects.all()
+    clientes = Cliente.objects.all()
     contexto = {
-        'objetos_menu': menu
+        'objetos_menu': menu,
+        'clientes': clientes
     }
     return render(request, "webGOcho/administracion.html", contexto)
 

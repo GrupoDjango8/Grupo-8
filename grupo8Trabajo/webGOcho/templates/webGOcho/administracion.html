@@ -111,7 +111,7 @@
     </section>
     <section id="pedidos">
         <h2>Pedidos</h2>
-        <form id="pedidoForm" onsubmit="return agregarPedido()">
+        <!-- <form id="pedidoForm" onsubmit="return agregarPedido()">
             <div class="mb-3">
                 <label for="cliente" class="form-label">Cliente</label>
                 <input type="text" class="form-control" id="cliente" required>
@@ -125,7 +125,8 @@
                 <input type="number" class="form-control" id="nroMesa" required min="1" max="20">
             </div>
             <button type="submit" class="btn btn-success">Agregar Pedido</button>
-        </form>
+        </form> -->
+        <p>Aquí se agregarán los pedidos</p>
         <table>
             <thead>
                 <tr>
@@ -136,7 +137,19 @@
                     <th>Nro. de Mesa</th>
                     <th>Acciones</th>
                 </tr>
-                
+                {% for cliente in clientes %}
+                    <tr>
+                        <td>{{cliente.nombre}}</td>
+                        <td>{{cliente.apellido}}</td>
+                        <td>{{cliente.email}}</td>
+                        <td>{{cliente.dni}}</td>
+                        <td>{{cliente.numero_mesa}}</td>
+                        <td>
+                            <button class="btn btn-primary"><a href="">Editar</a></button>
+                            <button class="btn btn-danger"><a  href="">Eliminar</a></button>
+                        </td>
+                    </tr>
+                {% endfor %}
             </thead>
             <tbody id="pedidosTable">
                 <!-- Acá van a ir los pediditosssssssssssssss -->
