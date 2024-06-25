@@ -67,6 +67,9 @@ class Pedido(models.Model):
     estado = models.CharField(max_length=10, choices=ESTADO_CHOICES, default='PENDIENTE', verbose_name='Estado del pedido')
     comida_bebida = models.ManyToManyField(Menu, through='PedidoItem')
 
+    def __str__(self):
+        return f"Pedido {self.id} - Mesa: {self.numero_mesa.id} - Estado: {self.estado}"
+
     def calcular_precio_total(self):
         total = 0
         for item in self.pedidoitem_set.all():
@@ -78,6 +81,9 @@ class PedidoItem(models.Model):
     pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
     menu = models.ForeignKey(Menu, on_delete=models.CASCADE)
     cantidad = models.IntegerField(default=1)
+
+    def __str__(self):
+        return f"Pedido {self.pedido} - Pedido: {self.menu} - Cantidad: {self.cantidad}"
 
 #modelo del administrador
 class AdministradorNegocio(models.Model):

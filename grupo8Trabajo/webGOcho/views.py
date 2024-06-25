@@ -4,7 +4,7 @@ from .forms import *
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
-from .models import Cliente, Menu
+from .models import Cliente, Menu, Pedido, PedidoItem
 # Create your views here.
 
 #Renderizado del index
@@ -63,9 +63,11 @@ def user_logout(request):
 def administracion(request):
     menu = Menu.objects.all()
     clientes = Cliente.objects.all()
+    pedidos = Pedido.objects.all()
     contexto = {
         'objetos_menu': menu,
-        'clientes': clientes
+        'clientes': clientes,
+        'pedidos': pedidos
     }
     return render(request, "webGOcho/administracion.html", contexto)
 
