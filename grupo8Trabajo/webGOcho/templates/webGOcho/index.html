@@ -58,7 +58,13 @@
                             {% for objeto_del_menu in objetos_menu %}
                                 {% if objeto_del_menu.objeto == 'comida' %}
                                 <tr>
-                                    <td>{{objeto_del_menu.objeto}}</td>
+                                    <!-- <td>{{objeto_del_menu.objeto}}</td> -->
+                                    {% if objeto_del_menu.subtipo == 'pizza' or  objeto_del_menu.subtipo == 'Pizza'%}
+                                    <td><i class="fas fa-pizza-slice"></i></td>
+                                    {% endif %}
+                                    {% if objeto_del_menu.subtipo == 'empanadas' or  objeto_del_menu.subtipo == 'Empanadas'%}
+                                    <td><i class="fas fa-utensils"></i></td>
+                                    {% endif %}
                                     <td>{{objeto_del_menu.nombre_del_producto}}</td>
                                     <td>{{objeto_del_menu.subtipo}}</td>
                                     <td>{{objeto_del_menu.descripcion}}</td>
@@ -113,8 +119,11 @@
                                     {% if objeto_del_menu.subtipo == 'cerveza' or  objeto_del_menu.subtipo == 'Cerveza'%}
                                     <td><i class="fas fa-beer"></i></td>
                                     {% endif %}
-                                    {% if objeto_del_menu.subtipo == 'Vino'%}
+                                    {% if objeto_del_menu.subtipo == 'Vino' or objeto_del_menu.subtipo == 'vino'%}
                                     <td><i class="fas fa-wine-bottle"></i></td>
+                                    {% endif %}
+                                    {%if objeto_del_menu.subtipo == 'Gaseosa' or objeto_del_menu.subtipo == 'gaseosa'%}
+                                    <td><i class="fas fa-cocktail"></i></td>
                                     {% endif %}
                                     <td>{{objeto_del_menu.nombre_del_producto}}</td>
                                     <td>{{objeto_del_menu.subtipo}}</td>

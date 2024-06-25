@@ -57,7 +57,8 @@ class AltaProductoForm(forms.Form):
     def clean_objeto(self):
         if not self.cleaned_data["objeto"].isalpha():
             raise ValidationError("El objeto solo puede estar compuesto por letras")
-
+        if self.cleaned_data["objeto"] != 'comida'and self.cleaned_data["objeto"] != 'Comida' and self.cleaned_data["objeto"] != 'Bebida' and self.cleaned_data["objeto"] != 'bebida':
+            raise ValidationError("El objeto debe ser comida o bebida")
         return self.cleaned_data["objeto"]
     
     def clean_subtipo(self):
