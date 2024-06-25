@@ -108,5 +108,18 @@ def eliminar(request, id_obj):
     return render(request,  "webGOcho/administracion.html", {"objetos_menu":objetos})
 
 
-""" def edicion_producto(request,id):
-    return(render(request,'edicion_producto.html')) """
+def editar_producto(request,id_menu):
+    objeto = Menu.objects.get(pk=id_menu)
+    form = AltaProductoForm(request.POST or None, instance=objeto)
+    if form.is_valid():
+        """ nuevo_producto = Menu(
+                objeto = form.cleaned_data['objeto'],
+                nombre_del_producto = form.cleaned_data['nombre_del_producto'],
+                subtipo = form.cleaned_data['subtipo'],
+                descripcion = form.cleaned_data['descripcion'],
+                precio = form.cleaned_data['precio'],
+        )
+        nuevo_producto.save() """
+        form.save()
+        return redirect('administracion')
+    return render(request, 'webGOcho/edicion_producto.html', {'objeto':objeto,'form':form})

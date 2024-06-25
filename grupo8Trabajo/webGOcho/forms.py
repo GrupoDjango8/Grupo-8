@@ -1,7 +1,7 @@
 from typing import Any
 from django import forms
 from django.core.exceptions import ValidationError
-from .models import Cliente
+from .models import Cliente, Menu
 class AltaClienteForm(forms.Form):
     nombre= forms.CharField(label='Nombre del cliente',required=True)
     apellido = forms.CharField(label='Apellido del cliente',required=True)
@@ -42,6 +42,18 @@ class AltaProductoForm(forms.Form):
     descripcion = forms.CharField(label='Descripción',required=True)
     precio = forms.IntegerField(label='Precio',required=True)
 
+     
+    def __init__(self, *args, **kwargs):
+        self.instance = kwargs.pop('instance', None)
+        super(AltaProductoForm, self).__init__(*args, **kwargs)
+        if self.instance:
+            self.fields['objeto'].initial = self.instance.objeto
+            self.fields['nombre_del_producto'].initial = self.instance.nombre_del_producto
+            self.fields['subtipo'].initial = self.instance.subtipo
+            self.fields['descripcion'].initial = self.instance.descripcion
+            self.fields['precio'].initial = self.instance.precio
+
+
     def clean_objeto(self):
         if not self.cleaned_data["objeto"].isalpha():
             raise ValidationError("El objeto solo puede estar compuesto por letras")
@@ -63,3 +75,14 @@ class AltaProductoForm(forms.Form):
             raise ValidationError("El precio debe ser un número mayor que 0")
         
         return self.cleaned_data["precio"]
+
+    def save(self, commit=True):
+        if self.instance:
+            self.instance.objeto = self.cleaned_data['objeto']
+            self.instance.nombre_del_producto = self.cleaned_data['nombre_del_producto']
+            self.instance.subtipo = self.cleaned_data['subtipo']
+            self.instance.descripcion = self.cleaned_data['descripcion']
+            self.instance.precio = self.cleaned_data['precio']
+            if commit:
+                self.instance.save()
+        return self.instance
