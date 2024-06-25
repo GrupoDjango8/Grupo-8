@@ -34,6 +34,9 @@ class Menu(models.Model):
     subtipo = models.CharField(verbose_name='Tipo de comida/bebida')
     descripcion = models.CharField(verbose_name='Descripción')
     precio = models.IntegerField(verbose_name='Precio')
+    
+    def __str__(self):
+        return f'Objeto:{self.objeto}| nombre del producto: {self.nombre_del_producto}| subtipo: {self.subtipo}'
 
 # hola = 'hola'
 #Pedido

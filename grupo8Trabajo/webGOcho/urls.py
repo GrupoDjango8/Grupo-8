@@ -7,6 +7,7 @@ urlpatterns = [
     path('administracion/', views.administracion, name='administracion'),
     path('alta_producto/', views.alta_producto, name='alta_producto'),
     path('eliminar_menu/<int:id_obj>', views.eliminar,name='eliminar'),
+    path('editar_producto/<int:id_menu>', views.editar_producto, name='editar_producto'),
 
 
     path("accounts/login/", auth_views.LoginView.as_view(template_name="webGOcho/registration/login.html"), name="login"),
