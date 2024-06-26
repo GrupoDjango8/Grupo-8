@@ -63,11 +63,13 @@ def user_logout(request):
 def administracion(request):
     menu = Menu.objects.all()
     clientes = Cliente.objects.all()
-    pedidos = Pedido.objects.all()
+    pedidos = PedidoItem.objects.all()
+    pedidos_cliente = Pedido.objects.all()
     contexto = {
         'objetos_menu': menu,
         'clientes': clientes,
-        'pedidos': pedidos
+        'pedidos': pedidos,
+        'pedidos_cliente': pedidos_cliente
     }
     return render(request, "webGOcho/administracion.html", contexto)
 
@@ -111,7 +113,7 @@ def eliminar(request, id_obj):
     objetos = Menu.objects.all()
     return render(request,  "webGOcho/administracion.html", {"objetos_menu":objetos})
 
-
+#editar producto
 def editar_producto(request,id_menu):
     objeto = Menu.objects.get(pk=id_menu)
     form = AltaProductoForm(request.POST or None, instance=objeto)
@@ -127,3 +129,9 @@ def editar_producto(request,id_menu):
         form.save()
         return redirect('administracion')
     return render(request, 'webGOcho/edicion_producto.html', {'objeto':objeto,'form':form})
+
+def eliminar_cliente(request, id_obj):
+    objeto = Cliente.objects.get(pk=id_obj)
+    objeto.delete()
+    clientes = Cliente.objects.all()
+    return render(request,  "webGOcho/administracion.html", {"clientes":clientes})

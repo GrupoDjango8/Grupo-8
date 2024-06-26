@@ -133,10 +133,24 @@
                     <th>Cliente</th>
                     <th>Pedido</th>
                     <th>Cantidad</th>
-                    <th>Precio</th>
                     <th>Estado</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
+            <tbody>
+                
+                {% for pedido in pedidos %}
+                    <tr>
+                        <td>{{pedido.pedido}}</td>
+                        <td>{{pedido.menu}}</td>
+                        <td>{{pedido.cantidad}}</td>
+                        <td>
+                            pendiente
+                        </td>
+                        <td><button class="btn btn-danger"><a href="">Eliminar</a></button></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
         </table>
         <br>
         <table>
@@ -157,8 +171,7 @@
                         <td>{{cliente.dni}}</td>
                         <td>{{cliente.numero_mesa}}</td>
                         <td>
-                            <button class="btn btn-primary"><a href="">Editar</a></button>
-                            <button class="btn btn-danger"><a  href="">Eliminar</a></button>
+                            <button class="btn btn-danger"><a  href="{% url 'eliminar_cliente' cliente.id %}">Eliminar</a></button>
                         </td>
                     </tr>
                 {% endfor %}
