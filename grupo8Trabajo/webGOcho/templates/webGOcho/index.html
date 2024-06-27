@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 {% endblock %}
-<!--Agregar en main las funcionalidades propias del index-->
+
 {% block main %}
     <section id="pedidos">
         <h2>Pedidos</h2>
@@ -40,8 +40,6 @@
               </h2>
               <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body">
-                    <!-- Placeholder content for this accordion, which is intended to demonstrate the 
-                    <code>.accordion-flush</code> class. This is the first item's accordion body. -->
                     <table>
                         <thead>
                             <tr>
@@ -58,35 +56,25 @@
                             {% for objeto_del_menu in objetos_menu %}
                                 {% if objeto_del_menu.objeto == 'comida' %}
                                 <tr>
-                                    <!-- <td>{{objeto_del_menu.objeto}}</td> -->
-                                    {% if objeto_del_menu.subtipo == 'pizza' or  objeto_del_menu.subtipo == 'Pizza'%}
+                                    {% if objeto_del_menu.subtipo == 'pizza' or objeto_del_menu.subtipo == 'Pizza' %}
                                     <td><i class="fas fa-pizza-slice"></i></td>
                                     {% endif %}
-                                    {% if objeto_del_menu.subtipo == 'empanadas' or  objeto_del_menu.subtipo == 'Empanadas'%}
+                                    {% if objeto_del_menu.subtipo == 'empanadas' or objeto_del_menu.subtipo == 'Empanadas' %}
                                     <td><i class="fas fa-utensils"></i></td>
                                     {% endif %}
                                     <td>{{objeto_del_menu.nombre_del_producto}}</td>
                                     <td>{{objeto_del_menu.subtipo}}</td>
                                     <td>{{objeto_del_menu.descripcion}}</td>
-                                    <td>{{objeto_del_menu.precio}}</td>
+                                    <td class="precio">{{objeto_del_menu.precio}}</td>
                                     <td><input type="number" class="cantidad-input" value="1" min="1"></td>
                                     <td><button class="pedir-button">Pedir</button></td>
                                 </tr>
-                                {%endif%}
+                                {% endif %}
                             {% empty %}
                                 <td>
                                     <p>No hay un menú disponible</p>
                                 </td>
                             {% endfor %}
-                            <!-- <tr>
-                                <td><i class="fas fa-pizza-slice"></i> Pizza</td>
-                                <td>Pizza Napolitana</td>
-                                <td>Pizza</td>
-                                <td>$600</td>
-                                <td><input type="number" class="cantidad-input" value="1" min="1"></td>
-                                <td>Pizza clásica italiana con salsa de tomate, mozzarella fresca y albahaca.</td>
-                                <td><button class="pedir-button" onclick="addToOrder('Pizza', 600, this)">Pedir</button></td>
-                            </tr>  -->                           
                         </tbody>
                     </table>                     
                 </div>
@@ -116,29 +104,28 @@
                             {% for objeto_del_menu in objetos_menu %}
                                 {% if objeto_del_menu.objeto == 'bebida' %}
                                 <tr>
-                                    {% if objeto_del_menu.subtipo == 'cerveza' or  objeto_del_menu.subtipo == 'Cerveza'%}
+                                    {% if objeto_del_menu.subtipo == 'cerveza' or objeto_del_menu.subtipo == 'Cerveza' %}
                                     <td><i class="fas fa-beer"></i></td>
                                     {% endif %}
-                                    {% if objeto_del_menu.subtipo == 'Vino' or objeto_del_menu.subtipo == 'vino'%}
+                                    {% if objeto_del_menu.subtipo == 'Vino' or objeto_del_menu.subtipo == 'vino' %}
                                     <td><i class="fas fa-wine-bottle"></i></td>
                                     {% endif %}
-                                    {%if objeto_del_menu.subtipo == 'Gaseosa' or objeto_del_menu.subtipo == 'gaseosa'%}
+                                    {% if objeto_del_menu.subtipo == 'Gaseosa' or objeto_del_menu.subtipo == 'gaseosa' %}
                                     <td><i class="fas fa-cocktail"></i></td>
                                     {% endif %}
                                     <td>{{objeto_del_menu.nombre_del_producto}}</td>
                                     <td>{{objeto_del_menu.subtipo}}</td>
                                     <td>{{objeto_del_menu.descripcion}}</td>
-                                    <td>{{objeto_del_menu.precio}}</td>
+                                    <td class="precio">{{objeto_del_menu.precio}}</td>
                                     <td><input type="number" class="cantidad-input" value="1" min="1"></td>
                                     <td><button class="pedir-button">Pedir</button></td>
                                 </tr>
-                                {%endif%}
-                                {% empty %}
+                                {% endif %}
+                            {% empty %}
                                 <td>
                                     <p>No hay un menú disponible</p>
                                 </td>
                             {% endfor %}
-                            
                         </tbody>
                     </table>
                 </div>
@@ -152,5 +139,38 @@
     </section>
 
     <button class="btn btn-danger centrado">Enviar</button>
-{% endblock %}
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const pedido = [];
+            const totalElement = document.getElementById('total');
+            const buttons = document.querySelectorAll('.pedir-button');
+
+            buttons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const row = this.closest('tr');
+                    const nombre = row.children[1].textContent;
+                    const precio = parseFloat(row.querySelector('.precio').textContent.replace('$', ''));
+                    const cantidad = parseInt(row.querySelector('.cantidad-input').value);
+
+                    const item = {
+                        nombre,
+                        precio,
+                        cantidad
+                    };
+
+                    pedido.push(item);
+                    actualizarTotal();
+                });
+            });
+
+            function actualizarTotal() {
+                let total = 0;
+                pedido.forEach(item => {
+                    total += item.precio * item.cantidad;
+                });
+                totalElement.textContent = `Total: $${total.toFixed(2)}`;
+            }
+        });
+    </script>
+{% endblock %}
