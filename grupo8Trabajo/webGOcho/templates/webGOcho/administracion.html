@@ -145,7 +145,11 @@
                         <td>{{pedido.menu}}</td>
                         <td>{{pedido.cantidad}}</td>
                         <td>
-                            pendiente
+                            {% for item in pedidos_cliente %}
+                                {% if pedido.pedido == item.numero_mesa%}
+                                    {{item.estado}}
+                                {% endif %}
+                            {% endfor %}
                         </td>
                         <td><button class="btn btn-danger"><a href="">Eliminar</a></button></td>
                     </tr>

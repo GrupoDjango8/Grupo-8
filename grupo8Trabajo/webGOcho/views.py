@@ -135,3 +135,5 @@ def eliminar_cliente(request, id_obj):
     objeto.delete()
     clientes = Cliente.objects.all()
     return render(request,  "webGOcho/administracion.html", {"clientes":clientes})
+
+

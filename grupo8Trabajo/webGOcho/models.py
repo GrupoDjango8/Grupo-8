@@ -22,6 +22,9 @@ class Cliente(models.Model):
         ]                            
     )
 
+    def __str__(self):
+        return str(self.numero_mesa)
+
 # Menú: 
 #   Objeto:      Comidas ó Bebidas
 #   Nombre producto: Plato
@@ -36,7 +39,7 @@ class Menu(models.Model):
     precio = models.IntegerField(verbose_name='Precio')
     
     def __str__(self):
-        return f'Objeto:{self.objeto}| nombre del producto: {self.nombre_del_producto}| subtipo: {self.subtipo}'
+        return f'Nombre del producto: {self.nombre_del_producto} | subtipo: {self.subtipo} | precio: {self.precio}'
 
 # hola = 'hola'
 #Pedido
@@ -68,7 +71,7 @@ class Pedido(models.Model):
     comida_bebida = models.ManyToManyField(Menu, through='PedidoItem')
 
     def __str__(self):
-        return f"Pedido {self.id} - Mesa: {self.numero_mesa.id} - Estado: {self.estado}"
+        return f"{self.numero_mesa}"
 
     def calcular_precio_total(self):
         total = 0
