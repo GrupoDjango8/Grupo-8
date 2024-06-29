@@ -205,7 +205,7 @@ def enviar_pedido(request):
     else:
         return JsonResponse({'status': 'error', 'message': 'Método no permitido'}, status=405)
 
-#Eliminar pedido
+#Eliminar pedido Item
 def eliminar_pedido(request, id_obj):
     #objeto = PedidoItem.objects.get(pk=id_obj)
     #objeto.delete()
@@ -215,3 +215,4 @@ def eliminar_pedido(request, id_obj):
     objeto = get_object_or_404(PedidoItem, pk=id_obj)
     objeto.delete()
     return redirect('administracion')
+

@@ -127,6 +127,31 @@
             <button type="submit" class="btn btn-success">Agregar Pedido</button>
         </form> -->
         <p>Aquí se agregarán los pedidos</p>
+        <h6>Dueños de los pedidos y estados</h6>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mesa</th>
+                    <th>Precio a abonar</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for pedido in pedidos_cliente %}
+                    <tr>
+                        <td>{{pedido.numero_mesa}}</td>
+                        <td>{{pedido.precio_total}}</td>
+                        <td>{{pedido.estado}}</td>
+                        <td>
+                            <button class="btn btn-primary">Editar</button>
+                            <button class="btn btn-danger"><a href="">Eliminar</a></button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h6>Items de los pedidos</h6>
         <table>
             <thead>
                 <tr>
