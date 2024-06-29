@@ -18,4 +18,5 @@ urlpatterns = [
     path("accounts/password_reset/", auth_views.PasswordResetView.as_view(template_name="webApp/registration/password_reset.html"), name="password_reset"),
 
     path('enviar_pedido/', views.enviar_pedido, name='enviar_pedido'),
+    path('eliminar_pedido/<int:id_obj>', views.eliminar_pedido,name='eliminar_pedido'),
 ]

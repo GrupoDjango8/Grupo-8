@@ -133,7 +133,6 @@
                     <th>Cliente</th>
                     <th>Pedido</th>
                     <th>Cantidad</th>
-                    <th>Estado</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -144,14 +143,7 @@
                         <td>{{pedido.pedido}}</td>
                         <td>{{pedido.menu}}</td>
                         <td>{{pedido.cantidad}}</td>
-                        <td>
-                            {% for item in pedidos_cliente %}
-                                {% if pedido.pedido == item.numero_mesa%}
-                                    {{item.estado}}
-                                {% endif %}
-                            {% endfor %}
-                        </td>
-                        <td><button class="btn btn-danger"><a href="">Eliminar</a></button></td>
+                        <td><button class="btn btn-danger"><a href="{% url 'eliminar_pedido' pedido.id %}">Eliminar</a></button></td>
                     </tr>
                 {% endfor %}
             </tbody>

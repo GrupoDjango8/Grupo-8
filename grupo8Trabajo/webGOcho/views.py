@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from django.http import HttpResponse
 from .forms import *
 from django.contrib import messages
@@ -116,11 +116,14 @@ def alta_producto(request):
 
 #Eliminar un producto
 def eliminar(request, id_obj):
-    objeto = Menu.objects.get(pk=id_obj)
+    # objeto = Menu.objects.get(pk=id_obj)
+    # objeto.delete()
+    # objetos = Menu.objects.all()
+    # return render(request,  "webGOcho/administracion.html", {"objetos_menu":objetos})
+    objeto = get_object_or_404(Menu, pk=id_obj)
     objeto.delete()
-    objetos = Menu.objects.all()
-    return render(request,  "webGOcho/administracion.html", {"objetos_menu":objetos})
-
+    return redirect('administracion')
+    
 #editar producto
 def editar_producto(request,id_menu):
     objeto = Menu.objects.get(pk=id_menu)
@@ -138,14 +141,19 @@ def editar_producto(request,id_menu):
         return redirect('administracion')
     return render(request, 'webGOcho/edicion_producto.html', {'objeto':objeto,'form':form})
 
-def eliminar_cliente(request, id_obj):
+#acciones con cliente
+""" def eliminar_cliente(request, id_obj):
     objeto = Cliente.objects.get(pk=id_obj)
     objeto.delete()
     clientes = Cliente.objects.all()
     return render(request,  "webGOcho/administracion.html", {"clientes":clientes})
+ """
+def eliminar_cliente(request, id_obj):
+    objeto = get_object_or_404(Cliente, pk=id_obj)
+    objeto.delete()
+    return redirect('administracion')
 
-
-
+#Pedidos administración
 @csrf_exempt
 def enviar_pedido(request):
     if request.method == 'POST':
@@ -196,3 +204,14 @@ def enviar_pedido(request):
             return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
     else:
         return JsonResponse({'status': 'error', 'message': 'Método no permitido'}, status=405)
+
+#Eliminar pedido
+def eliminar_pedido(request, id_obj):
+    #objeto = PedidoItem.objects.get(pk=id_obj)
+    #objeto.delete()
+    #objetos = PedidoItem.objects.all()
+    #return render(request,  "webGOcho/administracion.html", {"objetos_pedido":objetos})
+
+    objeto = get_object_or_404(PedidoItem, pk=id_obj)
+    objeto.delete()
+    return redirect('administracion')
