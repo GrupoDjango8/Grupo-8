@@ -54,7 +54,7 @@
                         </thead>
                         <tbody>
                             {% for objeto_del_menu in objetos_menu %}
-                                {% if objeto_del_menu.objeto == 'comida' %}
+                                {% if objeto_del_menu.objeto == 'comida' or objeto_del_menu.objeto == 'Comida'%}
                                 <tr>
                                     {% if objeto_del_menu.subtipo == 'pizza' or objeto_del_menu.subtipo == 'Pizza' %}
                                     <td><i class="fas fa-pizza-slice"></i></td>
@@ -102,7 +102,7 @@
                         </thead>
                         <tbody>
                             {% for objeto_del_menu in objetos_menu %}
-                                {% if objeto_del_menu.objeto == 'bebida' %}
+                                {% if objeto_del_menu.objeto == 'bebida' or objeto_del_menu.objeto == 'Bebida'%}
                                 <tr>
                                     {% if objeto_del_menu.subtipo == 'cerveza' or objeto_del_menu.subtipo == 'Cerveza' %}
                                     <td><i class="fas fa-beer"></i></td>
