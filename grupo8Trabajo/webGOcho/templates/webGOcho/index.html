@@ -138,39 +138,82 @@
         <p id="total">Total: $0.00</p>
     </section>
 
-    <button class="btn btn-danger centrado">Enviar</button>
+    <!-- El botón para enviar el pedido -->
+<button class="btn btn-danger centrado" id="enviar-pedido">Enviar</button>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const pedido = [];
-            const totalElement = document.getElementById('total');
-            const buttons = document.querySelectorAll('.pedir-button');
+<script>
+    var datados = []
+    document.addEventListener('DOMContentLoaded', function() {
+        const pedido = [];
+        const totalElement = document.getElementById('total');
+        const buttons = document.querySelectorAll('.pedir-button');
+        const enviarButton = document.getElementById('enviar-pedido');
 
-            buttons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const row = this.closest('tr');
-                    const nombre = row.children[1].textContent;
-                    const precio = parseFloat(row.querySelector('.precio').textContent.replace('$', ''));
-                    const cantidad = parseInt(row.querySelector('.cantidad-input').value);
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                const row = this.closest('tr');
+                const nombre = row.children[1].textContent;
+                const precio = parseFloat(row.querySelector('.precio').textContent.replace('$', ''));
+                const cantidad = parseInt(row.querySelector('.cantidad-input').value);
 
-                    const item = {
-                        nombre,
-                        precio,
-                        cantidad
-                    };
+                const item = {
+                    nombre,
+                    precio,
+                    cantidad
+                };
 
-                    pedido.push(item);
-                    actualizarTotal();
-                });
+                
+                datados.push(item)
+                /* console.log(
+                    'data', data,
+                    'item', item
+                ) */
+                console.log(datados)
+                pedido.push(item);
+                actualizarTotal();
+
+
             });
-
-            function actualizarTotal() {
-                let total = 0;
-                pedido.forEach(item => {
-                    total += item.precio * item.cantidad;
-                });
-                totalElement.textContent = `Total: $${total.toFixed(2)}`;
-            }
         });
-    </script>
+
+        function actualizarTotal() {
+            let total = 0;
+            pedido.forEach(item => {
+                total += item.precio * item.cantidad;
+            });
+            totalElement.textContent = `Total: $${total.toFixed(2)}`;
+        }
+
+        enviarButton.addEventListener('click', function() {
+            const numeroMesa = document.getElementById('reservarMesa').value;
+            const precioTotal = parseFloat(totalElement.textContent.replace('Total: $', '')); 
+            const pedido = datados
+            const data = {
+                numeroMesa: numeroMesa,
+                precioTotal: precioTotal,
+                pedido: pedido
+            };
+
+            fetch('enviar_pedido/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+
+        
+    });
+
+</script>
+
 {% endblock %}

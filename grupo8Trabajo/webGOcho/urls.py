@@ -15,5 +15,7 @@ urlpatterns = [
 
     path("accounts/login/", auth_views.LoginView.as_view(template_name="webGOcho/registration/login.html"), name="login"),
     path("accounts/logout/", views.user_logout, name="logout"),
-    path("accounts/password_reset/", auth_views.PasswordResetView.as_view(template_name="webApp/registration/password_reset.html"), name="password_reset")
+    path("accounts/password_reset/", auth_views.PasswordResetView.as_view(template_name="webApp/registration/password_reset.html"), name="password_reset"),
+
+    path('enviar_pedido/', views.enviar_pedido, name='enviar_pedido'),
 ]

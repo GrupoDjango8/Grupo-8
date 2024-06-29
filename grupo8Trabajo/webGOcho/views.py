@@ -5,6 +5,13 @@ from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from .models import Cliente, Menu, Pedido, PedidoItem
+
+#json
+
+import json
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+
 # Create your views here.
 
 #Renderizado del index
@@ -71,6 +78,7 @@ def administracion(request):
         'pedidos': pedidos,
         'pedidos_cliente': pedidos_cliente
     }
+    
     return render(request, "webGOcho/administracion.html", contexto)
 
 def alta_producto(request):
@@ -137,3 +145,54 @@ def eliminar_cliente(request, id_obj):
     return render(request,  "webGOcho/administracion.html", {"clientes":clientes})
 
 
+
+@csrf_exempt
+def enviar_pedido(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            numero_mesa = data.get('numeroMesa')
+            precio_total = data.get('precioTotal')
+            pedido = data.get('pedido')
+
+            # Procesar el pedido aquí
+            # Por ejemplo, guardar el pedido en la base de datos
+
+            response_data = {
+                'status': 'success',
+                'message': 'Pedido recibido correctamente',
+                'numeroMesa': numero_mesa,
+                'precioTotal': precio_total,
+                'pedido': pedido
+            }
+            #agregar pedido a la base:
+            print('mesa',response_data['numeroMesa'], 'precio',response_data['precioTotal'], 'pedido:', response_data['pedido']) 
+            nuevo_pedido = {
+                'numero_mesa': response_data['numeroMesa'],
+                'precio_total': response_data['precioTotal'],
+                'estado': 'PENDIENTE',
+                #'comida_bebida': response_data['pedido']
+            }
+            clientes = Cliente.objects.all()
+            for cliente in clientes:
+                #print(cliente.numero_mesa)
+                if str(cliente.numero_mesa) == nuevo_pedido['numero_mesa']:
+                    print('hola')
+                    print(cliente)
+                    nuevo_pedido['numero_mesa']=cliente
+
+            nuevo_pedido = Pedido(
+                numero_mesa = nuevo_pedido['numero_mesa'],
+                precio_total = nuevo_pedido['precio_total'],
+                estado = nuevo_pedido['estado']
+            )
+            
+            print(nuevo_pedido)
+            nuevo_pedido.save()
+            return JsonResponse(response_data, status=200)
+        except json.JSONDecodeError:
+            return JsonResponse({'status': 'error', 'message': 'JSON inválido'}, status=400)
+        except Exception as e:
+            return JsonResponse({'status': 'error', 'message': str(e)}, status=500)
+    else:
+        return JsonResponse({'status': 'error', 'message': 'Método no permitido'}, status=405)
