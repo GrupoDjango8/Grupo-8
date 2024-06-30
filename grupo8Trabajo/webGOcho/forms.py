@@ -1,7 +1,7 @@
 from typing import Any
 from django import forms
 from django.core.exceptions import ValidationError
-from .models import Cliente, Menu
+from .models import Cliente, Menu, Pedido
 class AltaClienteForm(forms.Form):
     nombre= forms.CharField(label='Nombre del cliente',required=True)
     apellido = forms.CharField(label='Apellido del cliente',required=True)
@@ -87,3 +87,36 @@ class AltaProductoForm(forms.Form):
             if commit:
                 self.instance.save()
         return self.instance
+    
+
+class EditPedidoForm(forms.Form):
+    ESTADO_CHOICES = [
+        ('PENDIENTE', 'Pendiente'),
+        ('ENTREGADO', 'Entregado'),
+    ]
+    
+    numero_mesa = forms.ModelChoiceField(
+        queryset=Cliente.objects.all(),
+        label='Número de mesa',
+        required=True
+    )
+    precio_total = forms.IntegerField(label='Precio Total', required=True)
+    estado = forms.ChoiceField(choices=ESTADO_CHOICES, label='Estado', required=True)
+
+    def __init__(self, *args, **kwargs):
+        self.instance = kwargs.pop('instance', None)
+        super(EditPedidoForm, self).__init__(*args, **kwargs)
+        if self.instance:
+            self.fields['numero_mesa'].initial = self.instance.numero_mesa
+            self.fields['precio_total'].initial = self.instance.precio_total
+            self.fields['estado'].initial = self.instance.estado
+
+    def save(self, commit=True):
+        if self.instance:
+            self.instance.numero_mesa = self.cleaned_data['numero_mesa']
+            self.instance.precio_total = self.cleaned_data['precio_total']
+            self.instance.estado = self.cleaned_data['estado']
+            if commit:
+                self.instance.save()
+        return self.instance
+    

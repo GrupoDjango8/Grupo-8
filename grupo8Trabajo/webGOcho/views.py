@@ -142,12 +142,7 @@ def editar_producto(request,id_menu):
     return render(request, 'webGOcho/edicion_producto.html', {'objeto':objeto,'form':form})
 
 #acciones con cliente
-""" def eliminar_cliente(request, id_obj):
-    objeto = Cliente.objects.get(pk=id_obj)
-    objeto.delete()
-    clientes = Cliente.objects.all()
-    return render(request,  "webGOcho/administracion.html", {"clientes":clientes})
- """
+
 def eliminar_cliente(request, id_obj):
     objeto = get_object_or_404(Cliente, pk=id_obj)
     objeto.delete()
@@ -249,3 +244,13 @@ def eliminar_pedido_cliente(request, id_obj):
     objeto = get_object_or_404(Pedido, pk=id_obj)
     objeto.delete()
     return redirect('administracion')
+
+
+
+def editar_pedido_cliente(request,id_ped):
+    objeto = Pedido.objects.get(pk=id_ped)
+    form = EditPedidoForm(request.POST or None, instance=objeto)
+    if form.is_valid():
+        form.save()
+        return redirect('administracion') 
+    return render(request, 'webGOcho/editar_pedido_cliente.html', {'objeto':objeto,'form':form})
