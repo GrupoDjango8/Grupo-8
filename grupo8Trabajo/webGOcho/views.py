@@ -188,6 +188,8 @@ def enviar_pedido(request):
                     print('hola')
                     print(cliente)
                     nuevo_pedido['numero_mesa']=cliente
+                else:
+                    print('Cliente no encontrado')
 
             nuevo_pedido = Pedido(
                 numero_mesa = nuevo_pedido['numero_mesa'],
@@ -197,6 +199,27 @@ def enviar_pedido(request):
             
             print(nuevo_pedido)
             nuevo_pedido.save()
+            obj_menu = Menu.objects.all()
+            array_mandar = []
+            for i in range (len(response_data['pedido'])):
+                for item in obj_menu:
+                    if item.nombre_del_producto == response_data['pedido'][i]['nombre']:
+                        print(item)
+                        array_mandar.append({
+                            'pedido': item,
+                            'cantidad': response_data['pedido'][i]['cantidad'],
+                            'precio': response_data['pedido'][i]['precio']* response_data['pedido'][i]['cantidad']
+                        })
+            print(array_mandar)
+            for p in array_mandar:
+                nuevo_pedido_item = PedidoItem(
+                    pedido = nuevo_pedido,
+                    menu = p['pedido'],
+                    cantidad = p['cantidad'],
+                )
+                nuevo_pedido_item.save()
+            #print(response_data['pedido'][0]['nombre'])
+
             return JsonResponse(response_data, status=200)
         except json.JSONDecodeError:
             return JsonResponse({'status': 'error', 'message': 'JSON inválido'}, status=400)
@@ -216,3 +239,13 @@ def eliminar_pedido(request, id_obj):
     objeto.delete()
     return redirect('administracion')
 
+#eliminar al cliente pedido
+def eliminar_pedido_cliente(request, id_obj):
+    #objeto = PedidoItem.objects.get(pk=id_obj)
+    #objeto.delete()
+    #objetos = PedidoItem.objects.all()
+    #return render(request,  "webGOcho/administracion.html", {"objetos_pedido":objetos})
+
+    objeto = get_object_or_404(Pedido, pk=id_obj)
+    objeto.delete()
+    return redirect('administracion')

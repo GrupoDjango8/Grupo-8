@@ -19,4 +19,5 @@ urlpatterns = [
 
     path('enviar_pedido/', views.enviar_pedido, name='enviar_pedido'),
     path('eliminar_pedido/<int:id_obj>', views.eliminar_pedido,name='eliminar_pedido'),
+    path('eliminar_pedido_cliente/<int:id_obj>', views.eliminar_pedido_cliente,name='eliminar_pedido_cliente')
 ]
