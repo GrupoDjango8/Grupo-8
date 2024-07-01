@@ -11,9 +11,9 @@ body{
     justify-content: center;
     align-items:center;
     min-height: 100vh;
-    background:url(imagen/imagen1.jpg);
+    /* background:url(imagen/imagen1.jpg); */
     background-size: cover;
-    padding: 20px;
+    padding: 0px;
     background-color: #d8a9a9;
 }
 
@@ -21,13 +21,13 @@ body{
 header,footer{
     width: 100%;
     text-align: center;
-    padding: 10px;
+    padding: 0px;
     background-color: #333;
     color: #000000;
 }
 
 header{
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 footer{
@@ -84,5 +84,5 @@ button{
 }
 footer{
     display: flex;
-    text-align: justify;
+    text-align: center;
 }
