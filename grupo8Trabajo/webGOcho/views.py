@@ -177,14 +177,20 @@ def enviar_pedido(request):
                 #'comida_bebida': response_data['pedido']
             }
             clientes = Cliente.objects.all()
+            lo_encontro = None
             for cliente in clientes:
                 #print(cliente.numero_mesa)
                 if str(cliente.numero_mesa) == nuevo_pedido['numero_mesa']:
                     print('hola')
                     print(cliente)
                     nuevo_pedido['numero_mesa']=cliente
+                    lo_encontro  = True
                 else:
                     print('Cliente no encontrado')
+            if not lo_encontro:
+                messages.error(request, 'Mesa no encontrada')
+            else:
+                messages.success(request, 'Su pedido ha sido realizado correctamente')
 
             nuevo_pedido = Pedido(
                 numero_mesa = nuevo_pedido['numero_mesa'],

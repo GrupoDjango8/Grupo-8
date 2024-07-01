@@ -96,3 +96,10 @@ header .messages .success {
     color: white;
     list-style: none;
 }
+
+header .messages .error {
+    background-color: rgba(167, 2, 2, 0.897) !important;
+    padding: 15px;
+    color: white;
+    list-style: none;
+}
