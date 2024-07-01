@@ -11,9 +11,9 @@ body{
     justify-content: center;
     align-items:center;
     min-height: 100vh;
-    /* background:url(imagen/imagen1.jpg); */
     background-size: cover;
     padding: 0px;
+    margin: 0px;
     background-color: #d8a9a9;
 }
 
