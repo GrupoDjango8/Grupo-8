@@ -1,3 +1,7 @@
 button, .btn{
-    color: white !important;
+    color: white;
+}
+
+.negro {
+    color: #000 !important;
 }
