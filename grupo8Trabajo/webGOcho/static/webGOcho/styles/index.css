@@ -90,12 +90,19 @@ th {
     padding: 5px;
 }
 
+
 .pedir-button {
     padding: 5px 10px;
     background-color: #007bff;
     color: white;
     border: none;
     cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Añadimos una transición para suavizar el cambio */
+}
+
+.pedir-button:hover {
+    background-color: #0056b3 !important; /* Cambia el color de fondo en hover */
+    color: white;
 }
 
 .centrado {

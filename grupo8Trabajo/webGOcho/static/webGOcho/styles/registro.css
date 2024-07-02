@@ -10,9 +10,9 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items:center;
-    min-height: 100vh;
+    min-height: 0vh;
     background-size: cover;
-    padding: 0px;
+    padding: 1rem;
     margin: 0px;
     background-color: #d8a9a9;
 }
@@ -83,6 +83,7 @@ button{
     margin-top: 2%;
 }
 footer{
-    display: flex;
-    text-align: center;
+    padding: 1%;
+    display: block;
+    margin-top: 0%;
 }
