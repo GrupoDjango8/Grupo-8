@@ -8,6 +8,7 @@
 {% endblock %}
 <!--Agregar en main las funcionalidades propias del form de registro -->
     {% block main %}
+    <div class="centered-content">
     {% if form.errors %}
     <p>Your username and password didn't match. Please try again.</p>
     {% endif %}
@@ -21,7 +22,7 @@
         {% endif %}
     {% endif %}
 
-    <form method="post" action="{% url 'login' %}">
+    <form method="post" action="{% url 'login' %}" class="login-form">
     {% csrf_token %}
     <table>
     <tr>
@@ -34,10 +35,11 @@
     </tr>
     </table>
 
-    <input type="submit" value="Login">
+    <input type="submit" value="Login" class="btn-submit">
     <input type="hidden" name="next" value="{{ next }}">
     </form>
 
     {# Assumes you set up the password_reset view in your URLconf #}
     <p><a href="{% url 'password_reset' %}">Recuperar contraseña</a></p>
+    </div>
 {% endblock %}

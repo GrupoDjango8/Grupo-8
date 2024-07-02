@@ -1,0 +1,82 @@
+/* webGOcho/styles/login.css */
+.centered-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh; /* Ajusta la altura mínima al 100% de la ventana gráfica */
+}
+
+table {
+    margin: 0 auto; /* Centrar la tabla horizontalmente */
+}
+
+.contenido{
+    padding: 0;
+}
+
+footer{
+    padding: 2% auto;
+}
+/*estilos del form*/
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+table {
+    margin: 0 auto; /* Centrar la tabla horizontalmente */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 20px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+    border-color: #555;
+    outline: none;
+}
+
+.btn-submit {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 4px;
+}
+
+.btn-submit:hover {
+    background-color: #45a049;
+}
+
+.login-form a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.login-form a:hover {
+    text-decoration: underline;
+}
+
+label{
+    height: 40px;
+}

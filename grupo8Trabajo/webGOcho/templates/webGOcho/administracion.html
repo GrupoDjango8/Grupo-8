@@ -13,7 +13,7 @@
 <header>
     <h1>Administrador</h1>
 </header>
-<main>
+<main class="contenido">
     {% if user.is_authenticated %}
     <h2>Bienvenid@ {{ user.username | upper }}</h2>
     {% endif %}
