@@ -136,6 +136,10 @@
                             <button class="btn btn-danger"><a  href="{% url 'eliminar_cliente' cliente.id %}">Eliminar</a></button>
                         </td>
                     </tr>
+                    {% empty %}
+                    <td>
+                        <p>No hay un clientes disponibles</p>
+                    </td>
                 {% endfor %}
             </thead>
             <tbody id="pedidosTable">
@@ -167,6 +171,10 @@
                             <button class="btn btn-danger"><a href="{% url 'eliminar_pedido_cliente' pedido.id %}">Eliminar</a></button>
                         </td>
                     </tr>
+                    {% empty %}
+                    <td>
+                        <p>No hay pedidos disponibles</p>
+                    </td>
                 {% endfor %}
             </tbody>
         </table>
@@ -189,6 +197,10 @@
                         <td>{{pedido.cantidad}}</td>
                         <td><button class="btn btn-danger"><a href="{% url 'eliminar_pedido' pedido.id %}">Eliminar</a></button></td>
                     </tr>
+                {% empty %}
+                    <td>
+                        <p>No hay pedidos disponibles</p>
+                    </td>
                 {% endfor %}
             </tbody>
         </table>
