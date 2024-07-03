@@ -110,11 +110,11 @@
                                 <tr>
                                     {% if objeto_del_menu.subtipo == 'cerveza' or objeto_del_menu.subtipo == 'Cerveza' %}
                                     <td><i class="fas fa-beer"></i></td>
-                                    {% endif %}
-                                    {% if objeto_del_menu.subtipo == 'Vino' or objeto_del_menu.subtipo == 'vino' %}
+                                    {% elif objeto_del_menu.subtipo == 'Vino' or objeto_del_menu.subtipo == 'vino' %}
                                     <td><i class="fas fa-wine-bottle"></i></td>
-                                    {% endif %}
-                                    {% if objeto_del_menu.subtipo == 'Gaseosa' or objeto_del_menu.subtipo == 'gaseosa' %}
+                                    {% elif objeto_del_menu.subtipo == 'Gaseosa' or objeto_del_menu.subtipo == 'gaseosa' %}
+                                    <td><i class="fas fa-cocktail"></i></td>
+                                    {% else %}
                                     <td><i class="fas fa-cocktail"></i></td>
                                     {% endif %}
                                     <td>{{objeto_del_menu.nombre_del_producto}}</td>
