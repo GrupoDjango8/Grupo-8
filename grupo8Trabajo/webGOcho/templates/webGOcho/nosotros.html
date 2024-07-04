@@ -1,0 +1,19 @@
+{% extends "webGOcho/base.html" %}
+{% load static %}
+
+{% block titulo %}Inicio{% endblock %}
+{% block extracss %}
+    <!-- <link rel="stylesheet" href="{% static 'webGOcho/styles/index.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'webGOcho/styles/nosotros.css' %}">
+{% endblock %}
+<!--Agregar en main las funcionalidades propias del form de registro -->
+{% block main %}
+<div class="nosotros-conteiner">
+    <h2 class="title-nosotros">¿Quiénes somos?</h2>
+    <article class="parrafos">
+        <p>Somos un grupo de apasionados por la cocina que decidimos abrir nuestro primer negocio de comida</p>
+        <p>Hace 10 años que nos dedicamos a la cocina pero hace 3 que iniciamos por cuenta propia</p>
+        <p>Deseamos que pueda asombrarse por nuestra calidad en la preparación de cada plato</p>
+    </article>
+</div>
+{% endblock %}
