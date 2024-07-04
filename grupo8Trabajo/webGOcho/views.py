@@ -260,3 +260,6 @@ def editar_pedido_cliente(request,id_ped):
         form.save()
         return redirect('administracion') 
     return render(request, 'webGOcho/editar_pedido_cliente.html', {'objeto':objeto,'form':form})
+
+def nosotros(request):
+    return render(request, "webGOcho/nosotros.html")
